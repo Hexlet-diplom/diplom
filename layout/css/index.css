@@ -1,0 +1,20 @@
+@font-face {
+  font-family: Regular;
+  src: url(/layout/assets/fonts/Poppins-Regular.ttf);
+}
+
+body {
+  font-family: Regular;
+}
+
+
+/* HEADER */
+
+header {
+  margin: 78px 31px 0 15px;
+  padding: 0 67px;
+}
+
+.header-logo {
+  margin-bottom: 6px;
+}
