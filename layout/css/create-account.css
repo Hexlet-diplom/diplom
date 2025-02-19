@@ -94,3 +94,22 @@ header {
   color: var(--white);
   transition: 0.1s;
 }
+
+/* create-account-section */ 
+
+.create-account-section {
+  margin-top: 88px;
+}
+
+.section__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-up-container {
+  width: 560px;
+  height: 766px;
+  
+  border-radius: 43px;
+  box-shadow: 3px 4px 7px 6px #00000017;
+}
