@@ -8,17 +8,17 @@
 
 @font-face {
   font-family: Poppins-regular;
-  src: url(./layout/assets/fonts/Poppins-Regular.ttf);
+  src: url(../assets/fonts/Poppins-Regular.ttf);
 }
 
 @font-face {
   font-family: Poppins-medium;
-  src: url(./layout/assets/fonts/Poppins-Medium.ttf);
+  src: url(../assets/fonts/Poppins-Medium.ttf);
 }
 
 @font-face {
   font-family: Poppins-bold;
-  src: url(./layout/assets/fonts/Poppins-ExtraBold.ttf);
+  src: url(../assets/fonts/Poppins-ExtraBold.ttf);
 }
 
 
@@ -79,7 +79,7 @@ header {
   border: 2px solid;
   border-radius: 8px;
   border-color: var(--orange);
-  
+
   font-family: Poppins-medium;
   font-weight: 600;
   color: var(--orange);
@@ -93,22 +93,4 @@ header {
   background: var(--orange);
   color: var(--white);
   transition: 0.1s;
-}
-
-/* MAIN SECTION */
-
-.main-section {
-  margin-top: 30px;
-}
-
-.title-main-section {
-  color: var(--blue);
-  width: 900px;
-  height: 300px;
-
-  font-family: Poppins-bold;
-  font-weight: 700;
-  font-size: 100px;
-  line-height: 107px;
-  letter-spacing: 0.05em;
 }
