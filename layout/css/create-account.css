@@ -29,7 +29,7 @@ body {
 /* CONTAINER */
 
 .container {
-  max-width: 1874px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -37,8 +37,7 @@ body {
 /* HEADER */
 
 header {
-  margin: 78px 31px 0 15px;
-  padding: 0 67px;
+  margin-top: 78px;
 }
 
 .header__inner {
@@ -109,7 +108,51 @@ header {
 .sign-up-container {
   width: 560px;
   height: 766px;
-  
+
   border-radius: 43px;
   box-shadow: 3px 4px 7px 6px #00000017;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  padding: 38px;
+}
+
+.placeholder {
+  font-family: Poppins-regular;
+  font-weight: 400;
+  font-size: 20px;
+
+  padding-bottom: 4px;
+  border-bottom: 2px solid;
+  border-color: var(--gray);
+  color: var(--orange);
+}
+
+.placeholder::placeholder {
+  color: var(--gray);
+  opacity: 40%;
+}
+
+.btn-create-account {
+  border: none;
+  border-radius: 8px;
+  background-color: var(--blue);
+
+  height: 40px;
+  width: 175px;
+  color: var(--white);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-container p a {
+  text-decoration: none;
+  color: var(--orange);
 }
