@@ -29,12 +29,12 @@ body {
 /* CONTAINER */
 
 .container {
-  max-width: 1874px;
+  max-width: 1840px;
   margin: 0 auto;
 }
 
 .container-1772px {
-  max-width: 1772px;
+  max-width: 1680px;
   margin: 0 auto;
 }
 
@@ -42,8 +42,7 @@ body {
 /* HEADER */
 
 header {
-  margin: 78px 31px 0 15px;
-  padding: 0 67px;
+  margin-top: 78px;
 }
 
 .header__inner {
@@ -170,7 +169,15 @@ main {
   display: flex;
   align-items: center;
   padding: 24px;
+  font: Montserrat-regular;
   border-radius: 6px;
   height: 49px;
+  color: #B9B5B2;
   background-color: #F2F4F8;
+}
+
+.div-container div:hover {
+  background-color: #FF914C;
+  color: #FFFFFF;
+  transition: 0.1s;
 }
