@@ -21,9 +21,25 @@
   src: url(../assets/fonts/Montserrat-Bold.ttf);
 }
 
+.blue {
+  color: var(--blue);
+}
+
+.orange {
+  color: var(--orange);
+}
+
 
 body {
   background-color: #FDFDFD;
+}
+
+.title {
+  font-family: Montserrat-bold;
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 107px;
+  letter-spacing: 0.05em;
 }
 
 /* CONTAINER */
@@ -105,7 +121,7 @@ main {
 
 /* MAIN SECTION */
 
-.main-section {
+.main-home-section {
   margin-top: 30px;
 }
 
@@ -115,7 +131,7 @@ main {
   gap: 18px;
 }
 
-.title-home-section {
+.home-section {
   color: var(--blue);
   width: 900px;
   height: 300px;
@@ -180,4 +196,34 @@ main {
   background-color: #FF914C;
   color: #FFFFFF;
   transition: 0.1s;
+}
+
+
+/* course-selector-section */
+
+.course-selector-section {
+  padding-top: 120px;
+}
+
+.section__inner {
+  display: flex;
+  gap: 11px;
+}
+
+.title {
+  max-width: 900px;
+}
+
+.course-selector {
+  display: flex;
+  gap: 22px;
+}
+
+.course-selector-conatiner {
+  max-width: 790px;
+  padding: 40px;
+  border-radius: 27px;
+  box-shadow: 0 4px 4px 0 #0000001A;
+
+  background-color: #FFF2EA;
 }
