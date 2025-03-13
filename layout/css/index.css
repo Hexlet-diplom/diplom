@@ -216,6 +216,7 @@ main {
 
 .course-selector {
   display: flex;
+  flex-wrap: nowrap;
   gap: 22px;
 }
 
@@ -226,4 +227,8 @@ main {
   box-shadow: 0 4px 4px 0 #0000001A;
 
   background-color: #FFF2EA;
+}
+
+.course-selector-container-inner {
+  display: flex;
 }
