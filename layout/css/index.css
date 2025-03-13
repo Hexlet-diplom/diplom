@@ -214,21 +214,53 @@ main {
   max-width: 900px;
 }
 
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-selector-wrapper {
+  flex: 1;
+  overflow: hidden;
+}
+
 .course-selector {
   display: flex;
   flex-wrap: nowrap;
-  gap: 22px;
+  gap: 20px;
+  width: max-content;
 }
 
-.course-selector-conatiner {
-  max-width: 790px;
-  padding: 40px;
+.course-selector-container {
   border-radius: 27px;
+  padding: 20px;
+  max-width: 690px;
+  height: 400px;
   box-shadow: 0 4px 4px 0 #0000001A;
 
   background-color: #FFF2EA;
 }
 
+.course-selector-container p {
+  font-family: Montserrat-regular;
+  font-size: 62px;
+  font-weight: 400;
+}
+
+.course-selector-container p span{
+  font-family: Montserrat-regular;
+  font-size: 58px;
+  font-weight: 700;
+}
+
 .course-selector-container-inner {
   display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.course-selector-container-inner img {
+  width: 250px;
 }
