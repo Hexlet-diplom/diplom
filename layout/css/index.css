@@ -203,6 +203,7 @@ main {
 
 .course-selector-section {
   padding-top: 120px;
+  padding-left: 20px;
 }
 
 .section__inner {
@@ -216,13 +217,9 @@ main {
 
 .carousel {
   display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.course-selector-wrapper {
-  flex: 1;
   overflow: hidden;
+  gap: 20px;
+  flex-direction: column;
 }
 
 .course-selector {
@@ -263,4 +260,19 @@ main {
 
 .course-selector-container-inner img {
   width: 250px;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 49px;
+  height: 6px;
+  background-color: #C4C4C4;
+  border-radius: 4px;
 }
