@@ -1,117 +1,757 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/layout/css/reset.css">
-  <link rel="stylesheet" href="/layout/css/index.css">
-  <title>сдайЕгэ.ком</title>
+	<title>Ezyskills | Home</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" itemprop="description" content="">
+	<meta name="keywords" itemprop="keywords" content="">
+	<!-- favicon -->
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="EzySkills" />
+	<link rel="manifest" href="/site.webmanifest" />
+	<!-- favicon -->
+	<link rel="stylesheet" href="css/reset.min.css?_v=20250326151148">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250326151148">
 </head>
+
 <body>
-  <header>
-    <div class="container">
-      <div class="header__inner">
-        <div>
-          <img src="./assets/image/header-logo.png" alt="logo">
-        </div>
-        
-            <nav>
-              <ul class="nav__menu">
-                <li class="link__item"><a href="">В начало</a></li>
-                <li class="link__item"><a href="">Выбрать курсы</a></li>
-                <li class="link__item"><a href="">Курсы</a></li>
-                <li class="link__item"><a href="">FAQ</a></li>
-                <li class="link__item"><a href="">Контакты</a></li>
-                <li class="link__item"><a href="">О нас</a></li>
-              </ul>
-            </nav>
-
-        <div class="btn-section">
-          <form action="/">
-            <button class="btn">Войти</button>
-          </form>
-          <form action="./html-pages/create-account.html">
-            <button class="btn">Зарегистрироваться</button>
-          </form>
-        </div>     
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="main-home-section">
-      <div class="container-1772px">
-        <div class="home-section-container">
-          <p class="title home-section">Поступи в вуз мечты вместе <br>с нами</p>
-          <p class="subtitle-home-section">Становись лучше <br>с каждым занятием!</p>
-          <form action="">
-            <input class="search-line-home-section" type="search" name="text" placeholder="Какой предмет вас интересует?">
-            <input class="search-home-section" type="submit" name="submit" value="Найти">
-          </form>
-          
-          <div class="div-container">
-            <div><p>Профильная математика</p></div>
-            <div><p>Математика</p></div>
-            <div><p>Русский язык</p></div>
-            <div><p>Физика</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="course-selector-section">
-        <div class="section__inner">
-          <p class="title orange">
-            Первая в мире
-            платформа <br> 
-            <span class="blue">
-              онлайн обучения на основе
-              ИИ
-            </span>
-          </p>
-
-          <div class="carousel">
-            <div class="course-selector-wrapper">
-              <div class="course-selector">
-                <div class="course-selector-container">
-                  <img src="./assets/image/create-account-page/blue-logo.png" alt="blue-logo">
-                  <div class="course-selector-container-inner">
-                    <p>Основанные на <span class="orange">AI курсы</span></p>
-                    <img src="./assets/image/create-account-page/tank-with-brain.png" alt="tank-with-brain">
-                  </div>
-                </div>
-                <div class="course-selector-container">
-                  <img src="./assets/image/create-account-page/blue-logo.png" alt="blue-logo">
-                  <div class="course-selector-container-inner">
-                    <p>AI придумает <span class="orange">вариант</span></p>
-                    <img src="./assets/image/create-account-page/coures-selector-brain.png" alt="coures-selector-brain">
-                  </div>
-                </div>
-                <div class="course-selector-container">
-                  <img src="./assets/image/create-account-page/blue-logo.png" alt="blue-logo">
-                  <div class="course-selector-container-inner">
-                    <p>AI придумает <span class="orange">тест/квиз</span></p>
-                    <img src="./assets/image/create-account-page/course-selector-compi]uter.png" alt="course-selector-computer">
-                  </div>
-                </div>
-                <div class="course-selector-container">
-                  <img src="./assets/image/create-account-page/blue-logo.png" alt="blue-logo">
-                  <div class="course-selector-container-inner">
-                    <p>Обучайся <span class="orange"></span></p>
-                    <img src="./assets/image/create-account-page/course-selector-phone.png" alt="course-selector-phone">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
-        </div>
-    </section>
-  </main>
+	<div class="wrapper">
+		<header class="header">
+			<div class="container">
+				<div class="header__body">
+					<a href="/" class="header__logo">
+						<picture>
+							<source media="(min-width: 575.98px)" srcset="img/logo.png">
+							<img src="img/logo-mobile.png" alt="Logotype">
+						</picture>
+					</a>
+					<nav aria-label="main menu" class="header__menu menu">
+						<ul class="menu__list">
+							<li class="menu__item"><a href="/" class="menu__link active">Home</a></li>
+							<li class="menu__item"><a href="/course-selector.html" class="menu__link">Course Selector</a></li>
+							<li class="menu__item"><a href="/courses.html" class="menu__link">Courses</a></li>
+							<li class="menu__item"><a href="/pricing.html" class="menu__link">Pricing</a></li>
+							<li class="menu__item"><a href="/faq.html" class="menu__link">FAQ</a></li>
+							<li class="menu__item"><a href="/contacts.html" class="menu__link">Contact US</a></li>
+						</ul>
+					</nav>
+					<div class="header__actions">
+						<a href="/login.html" class="header__action btn  btn-primary-outline">Log In</a>
+						<a href="/sign-in.html" class="header__action btn  btn-primary">Create Account</a>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="promo">
+				<div class="container">
+					<div class="promo__body">
+						<div class="promo__offer">
+							<h1 class="promo__title title-xxl">Skill your way up to success with us</h1>
+							<p class="promo__subtitle">Get the skills you need for the future of work.</p>
+							<form action="#" class="promo__form">
+								<input type="text" name="search" placeholder="Search the course you want" class="promo__form-input">
+								<button type="submit" class="promo__form-submit">Search</button>
+							</form>
+							<div class="promo__tags">
+								<a href="" class="promo__tag active">Cloud Computing</a>
+								<a href="" class="promo__tag">Cyber Security</a>
+								<a href="" class="promo__tag">DevOps</a>
+								<a href="" class="promo__tag">Data Science</a>
+								<a href="" class="promo__tag">Software Testing </a>
+							</div>
+						</div>
+						<div class="promo__side">
+							<div class="promo__image">
+								<img src="img/pretty-woman.png" alt="woman">
+							</div>
+							<div class="promo__info">
+								<div class="promo__info-caption">Best seller</div>
+								<ul class="promo__info-list">
+									<li class="promo__info-row">
+										<div class="promo__info-icon">
+											<img src="img/icons/data-analyst.svg" alt="icon">
+										</div>
+										<div class="promo__info-column">
+											<div class="promo__info-name">Data Analyst</div>
+											<div class="promo__info-rate">
+												<img src="img/icons/star-circle.svg" alt="icon"> 2145 Reviews
+											</div>
+										</div>
+									</li>
+									<li class="promo__info-row">
+										<div class="promo__info-icon">
+											<img src="img/icons/Website-Design.svg" alt="icon">
+										</div>
+										<div class="promo__info-column">
+											<div class="promo__info-name">Website Design</div>
+											<div class="promo__info-rate">
+												<img src="img/icons/star-circle.svg" alt="icon"> 2145 Reviews
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="platforms">
+				<div class="container">
+					<div class="platforms__body">
+						<h2 class="platforms__title title-xl"> World’s <br> First AI Based <span class="color-accent"> Online Learning Platform</span>
+						</h2>
+						<div class="platforms__slider">
+							<div class="platforms__slides">
+								<div class="platform">
+									<div class="platform__main">
+										<div class="platform__logo">
+											<img src="img/logo-blue.svg" alt="logo">
+										</div>
+										<div class="platform__name"> AI&nbsp;Based <strong class="color-accent">Course Selector</strong>
+										</div>
+									</div>
+									<div class="platform__image">
+										<img src="img/platforms/AICourseSelector.svg" alt="picture">
+									</div>
+								</div>
+								<div class="platform">
+									<div class="platform__main">
+										<div class="platform__logo">
+											<img src="img/logo-blue.svg" alt="logo">
+										</div>
+										<div class="platform__name"> AI Based <strong class="color-accent">Scenarios</strong>
+										</div>
+									</div>
+									<div class="platform__image">
+										<img src="img/platforms/AIScenarios.svg" alt="picture">
+									</div>
+								</div>
+								<div class="platform">
+									<div class="platform__main">
+										<div class="platform__logo">
+											<img src="img/logo-blue.svg" alt="logo">
+										</div>
+										<div class="platform__name"> AI Based <strong class="color-accent">Quizs/Tests</strong>
+										</div>
+									</div>
+									<div class="platform__image">
+										<img src="img/platforms/AIQuizs.svg" alt="picture">
+									</div>
+								</div>
+								<div class="platform">
+									<div class="platform__main">
+										<div class="platform__logo">
+											<img src="img/logo-blue.svg" alt="logo">
+										</div>
+										<div class="platform__name"> AI Based <strong class="color-accent"><small>Gamification</small></strong>
+										</div>
+									</div>
+									<div class="platform__image">
+										<img src="img/platforms/AIGamification.svg" alt="picture">
+									</div>
+								</div>
+							</div>
+							<div class="platforms__slider-pagination">
+								<span class="platforms__slider-pagination-bullet active"></span>
+								<span class="platforms__slider-pagination-bullet"></span>
+								<span class="platforms__slider-pagination-bullet"></span>
+								<span class="platforms__slider-pagination-bullet"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="join">
+				<div class="container">
+					<div class="join__caption">WHO CAN JOIN</div>
+					<div class="join__body">
+						<div class="join__main">
+							<h2 class="join__title title-xl"> Skill Development Schemes For All </h2>
+							<ol class="join__list">
+								<li class="join__item">
+									<div class="join__item-icon">
+										<img src="img/icons/educational-institution.svg" alt="icon">
+									</div>
+									<div class="join__item-desc"> Colleges/Universities </div>
+								</li>
+								<li class="join__item">
+									<div class="join__item-icon">
+										<img src="img/icons/professional.svg" alt="icon">
+									</div>
+									<div class="join__item-desc"> Individuals/Working Professionals </div>
+								</li>
+								<li class="join__item">
+									<div class="join__item-icon">
+										<img src="img/icons/startups.svg" alt="icon">
+									</div>
+									<div class="join__item-desc"> Startups </div>
+								</li>
+								<li class="join__item">
+									<div class="join__item-icon">
+										<img src="img/icons/corporates.svg" alt="icon">
+									</div>
+									<div class="join__item-desc"> Corporates </div>
+								</li>
+							</ol>
+						</div>
+						<div class="join__picture">
+							<img src="img/skill-development.svg" alt="picture">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="how-it-works">
+				<div class="container">
+					<div class="how-it-works__body">
+						<h2 class="how-it-works__title">How It Works</h2>
+						<ol class="how-it-works__steps">
+							<li class="how-it-works__card">
+								<div class="how-it-works__card-caption">Job Seeker</div>
+								<div class="how-it-works__card-image">
+									<img src="img/how-it-works/job-seeker.svg" alt="picture">
+								</div>
+							</li>
+							<li class="how-it-works__arrow">
+								<img src="img/icons/arrow-right-orange.svg" alt="icon">
+							</li>
+							<li class="how-it-works__step">
+								<div class="how-it-works__step-num">01</div>
+								<div class="how-it-works__step-image">
+									<img src="img/how-it-works/step-1.svg" alt="icon">
+								</div>
+								<div class="how-it-works__step-desc">Assessment Aptitude Test Interview</div>
+							</li>
+							<li class="how-it-works__arrow">
+								<img src="img/icons/arrow-right-orange.svg" alt="icon">
+							</li>
+							<li class="how-it-works__step how-it-works__step_offset">
+								<div class="how-it-works__step-num">02</div>
+								<div class="how-it-works__step-image">
+									<img src="img/how-it-works/step-2.svg" alt="icon">
+								</div>
+								<div class="how-it-works__step-desc">Hands on Practice Scenarios, Test Cases</div>
+							</li>
+							<li class="how-it-works__arrow">
+								<img src="img/icons/arrow-right-orange.svg" alt="icon">
+							</li>
+							<li class="how-it-works__step">
+								<div class="how-it-works__step-num">03</div>
+								<div class="how-it-works__step-image">
+									<img src="img/how-it-works/step-3.svg" alt="icon">
+								</div>
+								<div class="how-it-works__step-desc">Soft Skills & Business Training</div>
+							</li>
+							<li class="how-it-works__arrow">
+								<img src="img/icons/arrow-right-orange.svg" alt="icon">
+							</li>
+							<li class="how-it-works__step how-it-works__step_offset">
+								<div class="how-it-works__step-num">04</div>
+								<div class="how-it-works__step-image">
+									<img src="img/how-it-works/step-4.svg" alt="icon">
+								</div>
+								<div class="how-it-works__step-desc">Daily, Weekly, Monthly Assessments</div>
+							</li>
+							<li class="how-it-works__arrow">
+								<img src="img/icons/arrow-right-orange.svg" alt="icon">
+							</li>
+							<li class="how-it-works__step">
+								<div class="how-it-works__step-num">05</div>
+								<div class="how-it-works__step-image">
+									<img src="img/how-it-works/step-5.svg" alt="icon">
+								</div>
+								<div class="how-it-works__step-desc">Real Time Project Hackathons </div>
+							</li>
+							<li class="how-it-works__arrow">
+								<img src="img/icons/arrow-right-orange.svg" alt="icon">
+							</li>
+							<li class="how-it-works__step how-it-works__step_offset">
+								<div class="how-it-works__step-num">06</div>
+								<div class="how-it-works__step-image">
+									<img src="img/how-it-works/step-6.svg" alt="icon">
+								</div>
+								<div class="how-it-works__step-desc">Assessment Guidance & Monitoring</div>
+							</li>
+							<li class="how-it-works__arrow">
+								<img src="img/icons/arrow-right-orange.svg" alt="icon">
+							</li>
+							<li class="how-it-works__card">
+								<div class="how-it-works__card-caption">Employed</div>
+								<div class="how-it-works__card-image">
+									<img src="img/how-it-works/employed.svg" alt="picture">
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			<section class="courses">
+				<div class="container">
+					<h2 class="courses__title title-md">Popoular <span class="color-accent">Courses</span></h2>
+					<ul class="courses__list">
+						<li class="course" id="1">
+							<a href="/course-page.html" class="course__logo">
+								<img src="img/courses/Angular-JS.png" alt="logotype">
+							</a>
+							<div class="course__body">
+								<h3 class="course__name"><a href="/course-page.html">Angular JS</a></h3>
+								<p class="course__desc">A JavaScript-based open-source front-end web framework for developing single-page applications.</p>
+								<div class="course__actions">
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/monitor.svg" alt="icon">
+										</span> Live Demo </button>
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/clip.svg" alt="icon">
+										</span> Enroll Now </button>
+								</div>
+								<a href="/course-page.html" class="course__btn btn btn-primary">
+									<span class="course__btn-icon">
+										<img src="img/icons/download-white.svg" alt="icon">
+									</span> Download Curriculam </a>
+							</div>
+						</li>
+						<li class="course" id="2">
+							<a href="/course-page.html" class="course__logo">
+								<img src="img/courses/AWS.svg" alt="logotype">
+							</a>
+							<div class="course__body">
+								<h3 class="course__name"><a href="/course-page.html">AWS</a></h3>
+								<p class="course__desc">AWS Coaching and Certification helps you build and validate your skills so you can get more out of the cloud.</p>
+								<div class="course__actions">
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/monitor.svg" alt="icon">
+										</span> Live Demo </button>
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/clip.svg" alt="icon">
+										</span> Enroll Now </button>
+								</div>
+								<a href="/course-page.html" class="course__btn btn btn-primary">
+									<span class="course__btn-icon">
+										<img src="img/icons/download-white.svg" alt="icon">
+									</span> Download Curriculam </a>
+							</div>
+						</li>
+						<li class="course" id="3">
+							<a href="/course-page.html" class="course__logo">
+								<img src="img/courses/VueJS.png" alt="logotype">
+							</a>
+							<div class="course__body">
+								<h3 class="course__name"><a href="/course-page.html">Vue JS</a></h3>
+								<p class="course__desc">An open-source model–view–viewmodel front end JavaScript framework for building user interfaces & single-page applications.</p>
+								<div class="course__actions">
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/monitor.svg" alt="icon">
+										</span> Live Demo </button>
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/clip.svg" alt="icon">
+										</span> Enroll Now </button>
+								</div>
+								<a href="/course-page.html" class="course__btn btn btn-primary">
+									<span class="course__btn-icon">
+										<img src="img/icons/download-white.svg" alt="icon">
+									</span> Download Curriculam </a>
+							</div>
+						</li>
+						<li class="course" id="4">
+							<a href="/course-page.html" class="course__logo">
+								<img src="img/courses/Power-BI.png" alt="logotype">
+							</a>
+							<div class="course__body">
+								<h3 class="course__name"><a href="/course-page.html">Power BI</a></h3>
+								<p class="course__desc">An interactive data visualization software developed by Microsoft with primary focus on business intelligence.</p>
+								<div class="course__actions">
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/monitor.svg" alt="icon">
+										</span> Live Demo </button>
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/clip.svg" alt="icon">
+										</span> Enroll Now </button>
+								</div>
+								<a href="/course-page.html" class="course__btn btn btn-primary">
+									<span class="course__btn-icon">
+										<img src="img/icons/download-white.svg" alt="icon">
+									</span> Download Curriculam </a>
+							</div>
+						</li>
+						<li class="course" id="5">
+							<a href="/course-page.html" class="course__logo">
+								<img src="img/courses/Python.png" alt="logotype">
+							</a>
+							<div class="course__body">
+								<h3 class="course__name"><a href="/course-page.html">Python</a></h3>
+								<p class="course__desc">Python is an interpreted high-level general-purpose programming language.</p>
+								<div class="course__actions">
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/monitor.svg" alt="icon">
+										</span> Live Demo </button>
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/clip.svg" alt="icon">
+										</span> Enroll Now </button>
+								</div>
+								<a href="/course-page.html" class="course__btn btn btn-primary">
+									<span class="course__btn-icon">
+										<img src="img/icons/download-white.svg" alt="icon">
+									</span> Download Curriculam </a>
+							</div>
+						</li>
+						<li class="course" id="6">
+							<a href="/course-page.html" class="course__logo">
+								<img src="img/courses/React-JS.png" alt="logotype">
+							</a>
+							<div class="course__body">
+								<h3 class="course__name"><a href="/course-page.html">React JS</a></h3>
+								<p class="course__desc">React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.</p>
+								<div class="course__actions">
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/monitor.svg" alt="icon">
+										</span> Live Demo </button>
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/clip.svg" alt="icon">
+										</span> Enroll Now </button>
+								</div>
+								<a href="/course-page.html" class="course__btn btn btn-primary">
+									<span class="course__btn-icon">
+										<img src="img/icons/download-white.svg" alt="icon">
+									</span> Download Curriculam </a>
+							</div>
+						</li>
+						<li class="course" id="7">
+							<a href="/course-page.html" class="course__logo">
+								<img src="img/courses/Software-Testing.png" alt="logotype">
+							</a>
+							<div class="course__body">
+								<h3 class="course__name"><a href="/course-page.html">Software Testing</a></h3>
+								<p class="course__desc">The process of evaluating and verifying that a software product or application does what it is supposed to do.</p>
+								<div class="course__actions">
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/monitor.svg" alt="icon">
+										</span> Live Demo </button>
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/clip.svg" alt="icon">
+										</span> Enroll Now </button>
+								</div>
+								<a href="/course-page.html" class="course__btn btn btn-primary">
+									<span class="course__btn-icon">
+										<img src="img/icons/download-white.svg" alt="icon">
+									</span> Download Curriculam </a>
+							</div>
+						</li>
+						<li class="course" id="8">
+							<a href="/course-page.html" class="course__logo">
+								<img src="img/courses/Core-UI.svg" alt="logotype">
+							</a>
+							<div class="course__body">
+								<h3 class="course__name"><a href="/course-page.html">Core UI</a></h3>
+								<p class="course__desc">Learn the fastest way to build a modern dashboard for any platforms, browser, or device.</p>
+								<div class="course__actions">
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/monitor.svg" alt="icon">
+										</span> Live Demo </button>
+									<button class="course__action">
+										<span class="course__action-icon">
+											<img src="img/icons/clip.svg" alt="icon">
+										</span> Enroll Now </button>
+								</div>
+								<a href="/course-page.html" class="course__btn btn btn-primary">
+									<span class="course__btn-icon">
+										<img src="img/icons/download-white.svg" alt="icon">
+									</span> Download Curriculam </a>
+							</div>
+						</li>
+					</ul>
+					<a href="" class="courses__more btn btn-secondary">View All Courses</a>
+				</div>
+			</section>
+			<section class="achievements">
+				<div class="container">
+					<h2 class="achievements__title title-md">Our <span class="color-accent">Achievements</span></h2>
+					<div class="achievements__body">
+						<div class="achievements__picture">
+							<img src="img/achievements.svg" alt="picture">
+						</div>
+						<div class="achievements__content">
+							<div class="achievements__card">
+								<div class="achievements__card-num color-accent">100</div>
+								<div class="achievements__card-desc">
+									<img src="img/icons/student.svg" alt="icon"> Students Trained
+								</div>
+							</div>
+							<div class="achievements__card">
+								<div class="achievements__card-num color-accent">50</div>
+								<div class="achievements__card-desc">
+									<img src="img/icons/book.svg" alt="icon"> Courses Available
+								</div>
+							</div>
+							<div class="achievements__card">
+								<div class="achievements__card-num">70%</div>
+								<div class="achievements__card-desc"> Students Secured Jobs in Level 1 Companies </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="mentors">
+				<div class="container">
+					<h2 class="mentors__title title-xl"> Meet Our Professional <br>
+						<span class="color-accent">Mentors & Trainers</span>
+					</h2>
+					<div class="mentors__slider">
+						<div class="mentors__slide mentor">
+							<div class="mentor__label">
+								<img src="img/icons/cup.png" alt="icon"> BEST TRAINER
+							</div>
+							<div class="mentor__header">
+								<div class="mentor__thumb">
+									<img src="img/mentors/01.svg" alt="thumb">
+								</div>
+								<div class="mentor__info">
+									<div class="mentor__name">Sandeep</div>
+									<div class="mentor__position">.Net & Azure</div>
+									<div class="mentor__rate">
+										<div class="mentor__rate-stars">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-grey.svg" alt="icon">
+										</div>
+										<div class="mentor__rate-reviews">72 Reviews</div>
+									</div>
+									<ul class="mentor__props">
+										<li class="mentor__props-row">
+											<div class="mentor__props-icon">
+												<img src="img/icons/doc.svg" alt="icon">
+											</div>
+											<div class="mentor__props-text"> 39 Modules </div>
+										</li>
+										<li class="mentor__props-row">
+											<div class="mentor__props-icon">
+												<img src="img/icons/students.svg" alt="icon">
+											</div>
+											<div class="mentor__props-text"> 375 Students </div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<p class="mentor__desc">Sandeep is a Software Developer who expertised in .NET & Azure for more than 24 years and training 100’s of students to accompolish their goals & dreams.</p>
+						</div>
+						<div class="mentors__slide mentor">
+							<div class="mentor__header">
+								<div class="mentor__thumb">
+									<img src="img/mentors/02.svg" alt="thumb">
+								</div>
+								<div class="mentor__info">
+									<div class="mentor__name">Sudhansu</div>
+									<div class="mentor__position">Cloud & Cyber Security, Forensic</div>
+									<div class="mentor__rate">
+										<div class="mentor__rate-stars">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-grey.svg" alt="icon">
+										</div>
+										<div class="mentor__rate-reviews">38 Reviews</div>
+									</div>
+									<ul class="mentor__props">
+										<li class="mentor__props-row">
+											<div class="mentor__props-icon">
+												<img src="img/icons/doc.svg" alt="icon">
+											</div>
+											<div class="mentor__props-text"> 27 Modules </div>
+										</li>
+										<li class="mentor__props-row">
+											<div class="mentor__props-icon">
+												<img src="img/icons/students.svg" alt="icon">
+											</div>
+											<div class="mentor__props-text"> 169 Students </div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<p class="mentor__desc"> Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams. </p>
+						</div>
+						<div class="mentors__slide mentor">
+							<div class="mentor__header">
+								<div class="mentor__thumb">
+									<img src="img/mentors/03.svg" alt="thumb">
+								</div>
+								<div class="mentor__info">
+									<div class="mentor__name">Ruchika Tuteja</div>
+									<div class="mentor__position">UIUX Trainer</div>
+									<div class="mentor__rate">
+										<div class="mentor__rate-stars">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-yellow.svg" alt="icon">
+											<img src="img/icons/star-grey.svg" alt="icon">
+										</div>
+										<div class="mentor__rate-reviews">65 Reviews</div>
+									</div>
+									<ul class="mentor__props">
+										<li class="mentor__props-row">
+											<div class="mentor__props-icon">
+												<img src="img/icons/doc.svg" alt="icon">
+											</div>
+											<div class="mentor__props-text"> 44 Modules </div>
+										</li>
+										<li class="mentor__props-row">
+											<div class="mentor__props-icon">
+												<img src="img/icons/students.svg" alt="icon">
+											</div>
+											<div class="mentor__props-text"> 212 Students </div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<p class="mentor__desc"> I have 9 years of experience in Fullstack development. Have worked on multiple projects on. I can provide realtime simulation of these various development languages and framework by means of multiple projects. Can provide guidance... </p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="certs">
+				<div class="container">
+					<h2 class="certs__title title-md">Our <span class="color-accent">Certifications</span></h2>
+					<div class="certs__items">
+						<div class="certs__item">
+							<img src="img/certifications/iso-27001.svg" alt="cert">
+						</div>
+						<div class="certs__item">
+							<img src="img/certifications/iso-9001.svg" alt="cert">
+						</div>
+						<div class="certs__item">
+							<img src="img/certifications/iso-20000-1.svg" alt="cert">
+						</div>
+						<div class="certs__item">
+							<img src="img/certifications/iso-29993.svg" alt="cert">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="collaborations">
+				<div class="container">
+					<h2 class="collaborations__title title-md"> Our <span class="color-accent">Collaborations</span>
+					</h2>
+					<ul class="collaborations__list">
+						<li class="collaborations__item">
+							<img src="img/collaborations/nasscom.png" width="311" height="73" alt="nasscom logo">
+						</li>
+						<li class="collaborations__item">
+							<img src="img/collaborations/skill-india.png" width="229" height="161" alt="skill india logo">
+						</li>
+						<li class="collaborations__item">
+							<img src="img/collaborations/startupindia.png" width="386" height="116" alt="startupindia logo">
+						</li>
+						<li class="collaborations__item">
+							<img src="img/collaborations/tehyderabad.png" width="370" alt="tehyderabad logo">
+						</li>
+					</ul>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="footer__body">
+					<div class="footer__main">
+						<a href="/" class="footer__logo">
+							<img src="img/logo-white.svg" alt="logotype">
+						</a>
+						<p class="footer__note">Let Us build your career together Be the first person to transform yourself with our unique & world class corporate level trainings.</p>
+						<form action="#" class="footer__form form">
+							<h3 class="form__caption">Subscribe Our Newsletter</h3>
+							<div class="form__row">
+								<input type="email" name="email" class="form__control" placeholder="Your Email address">
+								<button type="submit" class="form__submit">
+									<img src="img/icons/arrow-right-white.svg" alt="icon">
+								</button>
+							</div>
+						</form>
+					</div>
+					<div class="footer__side">
+						<nav class="footer__menu" aria-label="menu in footer">
+							<h3 class="footer__title title-sm"> Quick <span class="color-accent">Links</span>
+							</h3>
+							<ul class="footer__menu-list">
+								<li class="footer__menu-item"><a href="" class="footer__menu-link">Home</a></li>
+								<li class="footer__menu-item"><a href="" class="footer__menu-link">Our Story</a></li>
+								<li class="footer__menu-item"><a href="" class="footer__menu-link">Best Courses</a></li>
+								<li class="footer__menu-item"><a href="" class="footer__menu-link">Your FAQ’s</a></li>
+								<li class="footer__menu-item"><a href="" class="footer__menu-link">Cancellation & Refunds</a></li>
+								<li class="footer__menu-item"><a href="" class="footer__menu-link">Contact US</a></li>
+							</ul>
+						</nav>
+						<div class="footer__contacts">
+							<h3 class="footer__title title-sm"> Contact <span class="accent-color">Us</span>
+							</h3>
+							<ul class="footer__contacts-list">
+								<li class="footer__contacts-item">
+									<div class="footer__contacts-icon">
+										<img src="img/icons/location-white.svg" alt="icon">
+									</div>
+									<div class="footer__contacts-body">
+										<address>Navakethan Complex, 6th Floor, 605, 606 A&P opp, CLock Tower, SD Road, Secunderabad, Telangana 500003</address>
+									</div>
+								</li>
+								<li class="footer__contacts-item">
+									<div class="footer__contacts-icon">
+										<img src="img/icons/envelope-white.svg" alt="icon">
+									</div>
+									<div class="footer__contacts-body">
+										<a href="mailto:info@ezyskills.in">info@ezyskills.in</a>
+									</div>
+								</li>
+								<li class="footer__contacts-item">
+									<div class="footer__contacts-icon">
+										<img src="img/icons/phone-white.svg" alt="icon">
+									</div>
+									<div class="footer__contacts-body">
+										<a href="tel:+918428448903">+91 8428448903</a>
+										<a href="tel:+919475484959">+91 9475484959</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="footer__bottom">
+					<div class="footer__links">
+						<a href="" class="footer__link">Terms & Conditions</a>
+						<a href="" class="footer__link">Privacy Policy</a>
+					</div>
+					<div class="footer__socials">
+						<a href="" class="footer__social"><img src="img/icons/facebook.svg" alt="icon of facebook"></a>
+						<a href="" class="footer__social"><img src="img/icons/twitter.svg" alt="icon of twitter"></a>
+						<a href="" class="footer__social"><img src="img/icons/instagram.svg" alt="icon of instagram"></a>
+						<a href="" class="footer__social"><img src="img/icons/linkedin.svg" alt="icon of linkedin"></a>
+						<a href="" class="footer__social"><img src="img/icons/youtube.svg" alt="icon of youtube"></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
 </body>
+
 </html>
