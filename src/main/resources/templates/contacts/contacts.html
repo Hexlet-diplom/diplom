@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Ezyskills | Contact Our Team</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" itemprop="description" content="">
+	<meta name="keywords" itemprop="keywords" content="">
+	<!-- favicon -->
+    <link rel="icon" type="image/png" th:href="@{/assets/icon/favicon-96x96.png}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" th:href="@{/assets/icon/favicon.svg}" />
+    <link rel="shortcut icon" th:href="@{/assets/icon/favicon.ico}" />
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/assets/icon/apple-touch-icon.png}" />
+    <meta name="apple-mobile-web-app-title" content="EzySkills" />
+    <link rel="manifest" th:src="@{/assets/site.webmanifest}" />
+	<!-- favicon -->
+    <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header header_white">
+			<div class="container">
+				<div class="header__body">
+                    <a th:href="@{/}" class="header__logo">
+                        <picture>
+                            <source media="(min-width: 575.98px)" th:srcset="@{/assets/img/logo.png}">
+                            <img th:src="@{/assets/img/logo-mobile.png}" alt="Logotype">
+                        </picture>
+					</a>
+					<nav aria-label="main menu" class="header__menu menu">
+                        <ul class="menu__list">
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">Home</a></li>
+                            <li class="menu__item"><a th:href="@{/course-selector}" class="menu__link">Course Selector</a></li>
+                            <li class="menu__item"><a th:href="@{/courses}" class="menu__link">Courses</a></li>
+                            <li class="menu__item"><a th:href="@{/pricing}" class="menu__link">Pricing</a></li>
+                            <li class="menu__item"><a th:href="@{/faq}" class="menu__link">FAQ</a></li>
+                            <li class="menu__item"><a th:href="@{/contacts}" class="menu__link">Contact US</a></li>
+                        </ul>
+					</nav>
+                    <div sec:authorize="!isAuthenticated()" class="header__actions">
+                        <a th:href="@{/login}" class="header__action btn btn-primary-outline">Log In</a>
+                        <a th:href="@{/register}" class="header__action btn btn-primary">Create Account</a>
+
+                    </div>
+                    <div sec:authorize="isAuthenticated()" class="header__actions">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="header__action btn btn-primary-outline">logout</button>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="contacts">
+				<div class="contacts__header">
+					<h1 class="contacts__title title-md">Contact Our Team</h1>
+				</div>
+				<div class="contacts__body">
+					<div class="container">
+						<div class="contacts__wrapper">
+							<form action="#" class="contacts__form">
+								<div class="contacts__form-grid">
+									<div class="form__field">
+										<label for="name" class="form__label">Your name*</label>
+										<input type="text" id="name" name="name" class="form__control" required placeholder="Enter your name">
+									</div>
+									<div class="form__field">
+										<label for="email" class="form__label">Contact email *</label>
+										<input type="email" id="email" name="email" class="form__control" required placeholder="you@example.com">
+									</div>
+									<div class="form__field">
+										<label for="phone" class="form__label">Phone Number*</label>
+										<input type="phone" id="phone" name="phone" class="form__control" required placeholder="Company name">
+									</div>
+									<div class="form__field">
+										<div class="form__label">Issue Related to *</div>
+										<div class="form__select">
+											<div class="form__select-btn active">
+												<span class="form__select-value"> Course Structure </span>
+												<span class="form__select-icon">
+													<img th:src="@{/assets/img/icons/chevron.svg}" alt="icon">
+												</span>
+											</div>
+											<ul class="form__select-list active">
+												<li class="form__select-item" aria-selected="true"> Course Structure </li>
+												<li class="form__select-item"> Payment Failure </li>
+												<li class="form__select-item"> Other </li>
+											</ul>
+										</div>
+									</div>
+									<div class="form__field form__field_lg">
+										<label for="message" class="form__label">Your message*</label>
+										<textarea name="message" id="message" class="form__control" placeholder="Type your message…."></textarea>
+									</div>
+								</div>
+								<div class="contacts__form-hint">By submitting this form you agree to our terms and conditions and our Privacy Policy which explains how we may collect, use and disclose your personal information including to third parties.</div>
+								<button type="submit" class="contacts__form-btn btn btn-secondary">Send</button>
+							</form>
+						</div>
+						<div class="contacts__bottom">
+							<div class="contacts__bottom-block">
+								<div class="contacts__bottom-icon">
+									<img th:src="@{/assets/img/email.png}" alt="icon">
+								</div>
+								<div class="contacts__bottom-caption">Email us</div>
+								<p class="contacts__bottom-subtitle">Email us for general queries, including marketing and partnership opportunities.</p>
+								<a th:href="@{mailto:hello@ezyskills.com}" class="contacts__bottom-btn">hello@ezyskills.com</a>
+							</div>
+							<div class="contacts__bottom-block">
+								<div class="contacts__bottom-icon">
+									<img th:src="@{/assets/img/operator.png}" alt="icon">
+								</div>
+								<div class="contacts__bottom-caption">Call us</div>
+								<p class="contacts__bottom-subtitle">Call us to speak to a member of our team. We are always happy to help.</p>
+								<a th:href="@{tel:+918888899999}" class="contacts__bottom-btn">+91 88888 99999</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__body">
+                    <div class="footer__main">
+                        <a th:href="@{/}" class="footer__logo">
+                            <img th:src="@{/assets/img/logo-white.svg}" alt="logotype">
+                        </a>
+                        <p class="footer__note">Let Us build your career together Be the first person to transform yourself with our unique & world class corporate level trainings.</p>
+                        <form action="#" class="footer__form form">
+                            <h3 class="form__caption">Subscribe Our Newsletter</h3>
+                            <div class="form__row">
+                                <input type="email" name="email" class="form__control" placeholder="Your Email address">
+                                <button type="submit" class="form__submit">
+                                    <img th:src="@{/assets/img/icons/arrow-right-white.svg}" alt="icon">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer__side">
+                        <nav class="footer__menu" aria-label="menu in footer">
+                            <h3 class="footer__title title-sm"> Quick <span class="color-accent">Links</span>
+                            </h3>
+                            <ul class="footer__menu-list">
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Our Story</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Best Courses</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Your FAQ’s</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Cancellation & Refunds</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Contact US</a></li>
+                            </ul>
+                        </nav>
+                        <div class="footer__contacts">
+                            <h3 class="footer__title title-sm"> Contact <span class="accent-color">Us</span>
+                            </h3>
+                            <ul class="footer__contacts-list">
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/location-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <address>Navakethan Complex, 6th Floor, 605, 606 A&P opp, CLock Tower, SD Road, Secunderabad, Telangana 500003</address>
+                                    </div>
+                                </li>
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/envelope-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <a th:href="@{mailto:info@ezyskills.in}">info@ezyskills.in</a>
+                                    </div>
+                                </li>
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/phone-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <a th:href="@{tel:+918428448903}">+91 8428448903</a>
+                                        <a th:href="@{tel:+919475484959}">+91 9475484959</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <div class="footer__links">
+                        <a th:href="@{/}" class="footer__link">Terms & Conditions</a>
+                        <a th:href="@{/}" class="footer__link">Privacy Policy</a>
+                    </div>
+                    <div class="footer__socials">
+                        <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>
+                        <a th:href="@{https://twitter.com}" class="footer__social"><img th:src="@{/assets/img/icons/twitter.svg}" alt="Twitter"></a>
+                        <a th:href="@{https://instagram.com}" class="footer__social"><img th:src="@{/assets/img/icons/instagram.svg}" alt="Instagram"></a>
+                        <a th:href="@{https://linkedin.com}" class="footer__social"><img th:src="@{/assets/img/icons/linkedin.svg}" alt="LinkedIn"></a>
+                        <a th:href="@{https://youtube.com}" class="footer__social"><img th:src="@{/assets/img/icons/youtube.svg}" alt="YouTube"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+	</div>
+</body>
+
+</html>

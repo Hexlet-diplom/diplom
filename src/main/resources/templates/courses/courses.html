@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Ezyskills | Courses List</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" itemprop="description" content="">
+	<meta name="keywords" itemprop="keywords" content="">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" th:href="@{/assets/icon/favicon-96x96.png}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" th:href="@{/assets/icon/favicon.svg}" />
+    <link rel="shortcut icon" th:href="@{/assets/icon/favicon.ico}" />
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/assets/icon/apple-touch-icon.png}" />
+    <meta name="apple-mobile-web-app-title" content="EzySkills" />
+    <link rel="manifest" th:src="@{/assets/site.webmanifest}" />
+    <!-- favicon -->
+    <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="container">
+				<div class="header__body">
+                    <a th:href="@{/}" class="header__logo">
+                        <picture>
+                            <source media="(min-width: 575.98px)" th:srcset="@{/assets/img/logo.png}">
+                            <img th:src="@{/assets/img/logo-mobile.png}" alt="Logotype">
+                        </picture>
+                    </a>
+                    <nav aria-label="main menu" class="header__menu menu">
+                        <ul class="menu__list">
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">Home</a></li>
+                            <li class="menu__item"><a th:href="@{/course-selector}" class="menu__link">Course Selector</a></li>
+                            <li class="menu__item"><a th:href="@{/courses}" class="menu__link">Courses</a></li>
+                            <li class="menu__item"><a th:href="@{/pricing}" class="menu__link">Pricing</a></li>
+                            <li class="menu__item"><a th:href="@{/faq}" class="menu__link">FAQ</a></li>
+                            <li class="menu__item"><a th:href="@{/contacts}" class="menu__link">Contact US</a></li>
+                        </ul>
+                    </nav>
+                    <div sec:authorize="!isAuthenticated()" class="header__actions">
+                        <a th:href="@{/login}" class="header__action btn btn-primary-outline">Log In</a>
+                        <a th:href="@{/register}" class="header__action btn btn-primary">Create Account</a>
+
+                    </div>
+                    <div sec:authorize="isAuthenticated()" class="header__actions">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="header__action btn btn-primary-outline">logout</button>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="courses">
+				<div class="courses__header">
+					<div class="container">
+						<h2 class="courses__title title-md">Courses <span class="color-accent">List</span></h2>
+						<form action="#" class="courses__filters">
+							<div class="courses__search">
+								<input type="text" name="search" class="courses__search-input" placeholder="Search The Course Here">
+								<button type="button" class="courses__search-btn">
+									<img th:src="@{/assets/img/icons/search.svg}" alt="icon">
+								</button>
+							</div>
+							<div class="courses__filters-items">
+								<label class="courses__filters-item">
+									<input type="radio" name="filter" value="all" class="courses__filters-input hidden" hidden>
+									<span class="courses__filters-text">All</span>
+								</label>
+								<label class="courses__filters-item">
+									<input type="radio" name="filter" value="opened" checked class="courses__filters-input hidden" hidden>
+									<span class="courses__filters-text">Opened</span>
+								</label>
+								<label class="courses__filters-item">
+									<input type="radio" name="filter" value="coming_soon" class="courses__filters-input hidden" hidden>
+									<span class="courses__filters-text">Coming Soon</span>
+								</label>
+								<label class="courses__filters-item">
+									<input type="radio" name="filter" value="archived" class="courses__filters-input hidden" hidden>
+									<span class="courses__filters-text">Archived</span>
+								</label>
+							</div>
+							<label class="courses__filters-sort">
+								<span class="courses__filters-caption">Sort by:</span>
+								<select name="sort" class="courses__filters-select">
+									<option value="popular" selected>Popular Class</option>
+									<option value="newest">Newest</option>
+									<option value="oldest">Oldest</option>
+									<option value="highest_rated">Highest Rated</option>
+									<option value="lowest_rated">Lowest Rated</option>
+									<option value="most_enrolled">Most Enrolled</option>
+									<option value="least_enrolled">Least Enrolled</option>
+									<option value="price_asc">Price: Low to High</option>
+									<option value="price_desc">Price: High to Low</option>
+								</select>
+								<span class="courses__filters-btn">
+									<img th:src="@{/assets/img/icons/triangle.svg}" alt="icon">
+								</span>
+							</label>
+						</form>
+					</div>
+				</div>
+				<div class="courses__body">
+					<div class="container">
+						<ul class="courses__list">
+							<li class="course" id="1">
+								<a th:href="@{/course-page}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Angular-JS.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a href="/course-page.html">Angular JS</a></h3>
+									<p class="course__desc">A JavaScript-based open-source front-end web framework for developing single-page applications.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/course-page}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="2">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/AWS.svg}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page.}">AWS</a></h3>
+									<p class="course__desc">AWS Coaching and Certification helps you build and validate your skills so you can get more out of the cloud.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="3">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/VueJS.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">Vue JS</a></h3>
+									<p class="course__desc">An open-source model–view–viewmodel front end JavaScript framework for building user interfaces & single-page applications.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="4">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Power-BI.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/courses}">Power BI</a></h3>
+									<p class="course__desc">An interactive data visualization software developed by Microsoft with primary focus on business intelligence.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="5">
+								<a th:href="@{/courses}" class="course__logo">
+                                    <img th:src="@{/assets/img/courses/Python.png}" alt="logotype">								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">Python</a></h3>
+									<p class="course__desc">Python is an interpreted high-level general-purpose programming language.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="6">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/React-JS.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">React JS</a></h3>
+									<p class="course__desc">React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="7">
+								<a th:href="@{/course-page}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Software-Testing.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">Software Testing</a></h3>
+									<p class="course__desc">The process of evaluating and verifying that a software product or application does what it is supposed to do.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="8">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Core-UI.svg}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">Core UI</a></h3>
+									<p class="course__desc">Learn the fastest way to build a modern dashboard for any platforms, browser, or device.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="9">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Angular-JS.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">Angular JS</a></h3>
+									<p class="course__desc">A JavaScript-based open-source front-end web framework for developing single-page applications.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="10">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/AWS.svg}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">AWS</a></h3>
+									<p class="course__desc">AWS Coaching and Certification helps you build and validate your skills so you can get more out of the cloud.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="11">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/VueJS.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">Vue JS</a></h3>
+									<p class="course__desc">An open-source model–view–viewmodel front end JavaScript framework for building user interfaces & single-page applications.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="12">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Power-BI.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">Power BI</a></h3>
+									<p class="course__desc">An interactive data visualization software developed by Microsoft with primary focus on business intelligence.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="13">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Python.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/courses}">Python</a></h3>
+									<p class="course__desc">Python is an interpreted high-level general-purpose programming language.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="14">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/React-JS.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">React JS</a></h3>
+									<p class="course__desc">React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="15">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Software-Testing.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">Software Testing</a></h3>
+									<p class="course__desc">The process of evaluating and verifying that a software product or application does what it is supposed to do.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="16">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Core-UI.svg}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/course-page}">Core UI</a></h3>
+									<p class="course__desc">Learn the fastest way to build a modern dashboard for any platforms, browser, or device.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="17">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Angular-JS.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/courses}">Angular JS</a></h3>
+									<p class="course__desc">A JavaScript-based open-source front-end web framework for developing single-page applications.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="18">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/AWS.svg}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/courses}">AWS</a></h3>
+									<p class="course__desc">AWS Coaching and Certification helps you build and validate your skills so you can get more out of the cloud.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="19">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/VueJS.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/courses}">Vue JS</a></h3>
+									<p class="course__desc">An open-source model–view–viewmodel front end JavaScript framework for building user interfaces & single-page applications.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+							<li class="course" id="20">
+								<a th:href="@{/courses}" class="course__logo">
+									<img th:src="@{/assets/img/courses/Power-BI.png}" alt="logotype">
+								</a>
+								<div class="course__body">
+									<h3 class="course__name"><a th:href="@{/courses}">Power BI</a></h3>
+									<p class="course__desc">An interactive data visualization software developed by Microsoft with primary focus on business intelligence.</p>
+									<div class="course__actions">
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon">
+											</span> Live Demo </button>
+										<button class="course__action">
+											<span class="course__action-icon">
+												<img th:src="@{/assets/img/icons/clip.svg}" alt="icon">
+											</span> Enroll Now </button>
+									</div>
+									<a th:href="@{/courses}" class="course__btn btn btn-primary">
+										<span class="course__btn-icon">
+											<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon">
+										</span> Download Curriculam </a>
+								</div>
+							</li>
+						</ul>
+						<div class="courses__pagination pagination">
+							<a th:href="@{/coureses}" class="pagination__item active">1</a>
+							<a th:href="@{/coureses}" class="pagination__item">2</a>
+							<a th:href="@{/coureses}" class="pagination__item">3</a>
+							<a th:href="@{/coureses}" class="pagination__item">4</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__body">
+                    <div class="footer__main">
+                        <a th:href="@{/}" class="footer__logo">
+                            <img th:src="@{/assets/img/logo-white.svg}" alt="logotype">
+                        </a>
+                        <p class="footer__note">Let Us build your career together Be the first person to transform yourself with our unique & world class corporate level trainings.</p>
+                        <form action="#" class="footer__form form">
+                            <h3 class="form__caption">Subscribe Our Newsletter</h3>
+                            <div class="form__row">
+                                <input type="email" name="email" class="form__control" placeholder="Your Email address">
+                                <button type="submit" class="form__submit">
+                                    <img th:src="@{/assets/img/icons/arrow-right-white.svg}" alt="icon">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer__side">
+                        <nav class="footer__menu" aria-label="menu in footer">
+                            <h3 class="footer__title title-sm"> Quick <span class="color-accent">Links</span>
+                            </h3>
+                            <ul class="footer__menu-list">
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Our Story</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Best Courses</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Your FAQ’s</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Cancellation & Refunds</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Contact US</a></li>
+                            </ul>
+                        </nav>
+                        <div class="footer__contacts">
+                            <h3 class="footer__title title-sm"> Contact <span class="accent-color">Us</span>
+                            </h3>
+                            <ul class="footer__contacts-list">
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/location-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <address>Navakethan Complex, 6th Floor, 605, 606 A&P opp, CLock Tower, SD Road, Secunderabad, Telangana 500003</address>
+                                    </div>
+                                </li>
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/envelope-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <a th:href="@{mailto:info@ezyskills.in}">info@ezyskills.in</a>
+                                    </div>
+                                </li>
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/phone-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <a th:href="@{tel:+918428448903}">+91 8428448903</a>
+                                        <a th:href="@{tel:+919475484959}">+91 9475484959</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <div class="footer__links">
+                        <a th:href="@{/}" class="footer__link">Terms & Conditions</a>
+                        <a th:href="@{/}" class="footer__link">Privacy Policy</a>
+                    </div>
+                    <div class="footer__socials">
+                        <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>
+                        <a th:href="@{https://twitter.com}" class="footer__social"><img th:src="@{/assets/img/icons/twitter.svg}" alt="Twitter"></a>
+                        <a th:href="@{https://instagram.com}" class="footer__social"><img th:src="@{/assets/img/icons/instagram.svg}" alt="Instagram"></a>
+                        <a th:href="@{https://linkedin.com}" class="footer__social"><img th:src="@{/assets/img/icons/linkedin.svg}" alt="LinkedIn"></a>
+                        <a th:href="@{https://youtube.com}" class="footer__social"><img th:src="@{/assets/img/icons/youtube.svg}" alt="YouTube"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+	</div>
+</body>
+
+</html>

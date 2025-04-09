@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Ezyskills | Log In</title>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" itemprop="keywords" content="">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" th:href="@{/favicon-96x96.png}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" th:href="@{/favicon.svg}" />
+    <link rel="shortcut icon" th:href="@{/favicon.ico}" />
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/apple-touch-icon.png}" />
+    <meta name="apple-mobile-web-app-title" content="EzySkills" />
+    <link rel="manifest" th:src="@{assets/site.webmanifest}" />
+    <!-- styles -->
+    <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
+</head>
+
+<body>
+<div class="wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="header__body">
+                <a th:href="@{/}" class="header__logo">
+                    <picture>
+                        <source media="(min-width: 575.98px)" th:srcset="@{/assets/img/logo.png}">
+                        <img th:src="@{/assets/img/logo-mobile.png}" alt="Logotype">
+                    </picture>
+                </a>
+                <nav aria-label="main menu" class="header__menu menu">
+                    <ul class="menu__list">
+                        <li class="menu__item"><a th:href="@{/}" class="menu__link">Home</a></li>
+                        <li class="menu__item"><a th:href="@{/course-selector}" class="menu__link">Course Selector</a></li>
+                        <li class="menu__item"><a th:href="@{/courses}" class="menu__link">Courses</a></li>
+                        <li class="menu__item"><a th:href="@{/pricing}" class="menu__link">Pricing</a></li>
+                        <li class="menu__item"><a th:href="@{/faq}" class="menu__link">FAQ</a></li>
+                        <li class="menu__item"><a th:href="@{/contacts}" class="menu__link">Contact US</a></li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <a th:href="@{/login}" class="header__action btn btn-primary-outline">Log In</a>
+                    <a th:href="@{/register}" class="header__action btn btn-primary">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="login">
+            <div class="container">
+                <div class="login__body">
+                    <form th:action="@{/login}" method="post" class="login__form form">
+                        <h1 class="form__title title">Log In</h1>
+                        <input type="email" name="username" class="form__control" placeholder="Email Address" required />
+                        <input type="password" name="password" class="form__control" placeholder="Password" required />
+                        <label class="form__checkbox">
+                            <input type="checkbox" name="remember" class="form__checkbox-input hidden" hidden>
+                            <span class="form__checkbox-field">Remember Me</span>
+                        </label>
+                        <div th:if="${param.error}">
+                            <span style="color:red;">Invalid email or password!</span>
+                        </div>
+                        <button type="submit" class="form__btn btn btn-sm btn-secondary">Login</button>
+                        <div class="form__desc">Already Created? <a th:href="@{/login}" class="form__desc-link">Login Here</a></div>
+                        <span class="form__separator">or</span>
+                        <div class="form__socials form__socials_column">
+                            <a th:href="@{/auth/google}" class="form__social google-btn">
+                                <img th:src="@{/assets/img/icons/google.png}" alt="google logo"> Login with Google
+                            </a>
+                            <a th:href="@{/auth/facebook}" class="form__social facebook-btn">
+                                <img th:src="@{/assets/img/icons/facebook-square.svg}" alt="facebook logo"> Login with Facebook
+                            </a>
+                            <a th:href="@{/auth/apple}" class="form__social iphone-btn">
+                                <img th:src="@{/assets/img/icons/apple.svg}" alt="apple logo"> Login with Apple
+                            </a>
+                        </div>
+                        <div class="form__privacy">
+                            By continuing, you agree to the <a th:href="@{/terms}">Terms of Service</a> and <a th:href="@{/privacy}">Privacy Policy</a>
+                        </div>
+                    </form>
+                    <div class="login__picture">
+                        <img th:src="@{/assets/img/login.svg}" alt="picture">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__body">
+                <div class="footer__main">
+                    <a th:href="@{/'/'}" class="footer__logo">
+                        <img th:src="@{/assets/img/logo-white.svg}" alt="logotype">
+                    </a>
+                    <p class="footer__note">
+                        Let Us build your career together. Be the first person to transform yourself with our unique & world class corporate level trainings.
+                    </p>
+                    <form th:action="@{/subscribe}" method="post" class="footer__form form">
+                        <h3 class="form__caption">Subscribe Our Newsletter</h3>
+                        <div class="form__row">
+                            <input type="email" name="email" class="form__control" placeholder="Your Email address">
+                            <button type="submit" class="form__submit">
+                                <img th:src="@{/assets/img/icons/arrow-right-white.svg}" alt="icon">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="footer__side">
+                    <nav class="footer__menu" aria-label="menu in footer">
+                        <h3 class="footer__title title-sm">Quick <span class="color-accent">Links</span></h3>
+                        <ul class="footer__menu-list">
+                            <li><a th:href="@{/}" class="footer__menu-link">Home</a></li>
+                            <li><a th:href="@{/about}" class="footer__menu-link">Our Story</a></li>
+                            <li><a th:href="@{/courses}" class="footer__menu-link">Best Courses</a></li>
+                            <li><a th:href="@{/faq}" class="footer__menu-link">Your FAQ’s</a></li>
+                            <li><a th:href="@{/refund}" class="footer__menu-link">Cancellation & Refunds</a></li>
+                            <li><a th:href="@{/contacts}" class="footer__menu-link">Contact US</a></li>
+                        </ul>
+                    </nav>
+                    <div class="footer__contacts">
+                        <h3 class="footer__title title-sm">Contact <span class="accent-color">Us</span></h3>
+                        <ul class="footer__contacts-list">
+                            <li>
+                                <div class="footer__contacts-icon">
+                                    <img th:src="@{/assets/img/icons/location-white.svg}" alt="icon">
+                                </div>
+                                <div class="footer__contacts-body">
+                                    <address>Navakethan Complex, 6th Floor, 605, 606 A&P opp, Clock Tower, SD Road, Secunderabad, Telangana 500003</address>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="footer__contacts-icon">
+                                    <img th:src="@{/assets/img/icons/envelope-white.svg}" alt="icon">
+                                </div>
+                                <div class="footer__contacts-body">
+                                    <a href="mailto:info@ezyskills.in">info@ezyskills.in</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="footer__contacts-icon">
+                                    <img th:src="@{/assets/img/icons/phone-white.svg}" alt="icon">
+                                </div>
+                                <div class="footer__contacts-body">
+                                    <a href="tel:+918428448903">+91 8428448903</a>
+                                    <a href="tel:+919475484959">+91 9475484959</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__links">
+                    <a th:href="@{/terms}" class="footer__link">Terms & Conditions</a>
+                    <a th:href="@{/privacy}" class="footer__link">Privacy Policy</a>
+                </div>
+                <div class="footer__socials">
+                    <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>
+                    <a th:href="@{https://twitter.com}" class="footer__social"><img th:src="@{/assets/img/icons/twitter.svg}" alt="Twitter"></a>
+                    <a th:href="@{https://instagram.com}" class="footer__social"><img th:src="@{/assets/img/icons/instagram.svg}" alt="Instagram"></a>
+                    <a th:href="@{https://linkedin.com}" class="footer__social"><img th:src="@{/assets/img/icons/linkedin.svg}" alt="LinkedIn"></a>
+                    <a th:href="@{https://youtube.com}" class="footer__social"><img th:src="@{/assets/img/icons/youtube.svg}" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+
+</html>
