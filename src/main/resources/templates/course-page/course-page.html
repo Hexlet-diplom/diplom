@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Ezyskills | Courses List</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" itemprop="description" content="">
+	<meta name="keywords" itemprop="keywords" content="">
+	<!-- favicon -->
+    <link rel="icon" type="image/png" th:href="@{/assets/icon/favicon-96x96.png}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" th:href="@{/assets/icon/favicon.svg}" />
+    <link rel="shortcut icon" th:href="@{/assets/icon/favicon.ico}" />
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/assets/icon/apple-touch-icon.png}" />
+    <meta name="apple-mobile-web-app-title" content="EzySkills" />
+    <link rel="manifest" th:src="@{/assets/site.webmanifest}" />
+	<!-- favicon -->
+    <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
+</head>
+
+<body>
+	<div class="wrapper">
+        <header class="header header_white">
+            <div class="container">
+                <div class="header__body">
+                    <a th:href="@{/}" class="header__logo">
+                        <picture>
+                            <source media="(min-width: 575.98px)" th:srcset="@{/assets/img/logo.png}">
+                            <img th:src="@{/assets/img/logo-mobile.png}" alt="Logotype">
+                        </picture>
+                    </a>
+                    <nav aria-label="main menu" class="header__menu menu">
+                        <ul class="menu__list">
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">Home</a></li>
+                            <li class="menu__item"><a th:href="@{/course-selector}" class="menu__link">Course Selector</a></li>
+                            <li class="menu__item"><a th:href="@{/courses}" class="menu__link">Courses</a></li>
+                            <li class="menu__item"><a th:href="@{/pricing}" class="menu__link">Pricing</a></li>
+                            <li class="menu__item"><a th:href="@{/faq}" class="menu__link">FAQ</a></li>
+                            <li class="menu__item"><a th:href="@{/contacts}" class="menu__link">Contact US</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header__actions">
+                        <a th:href="@{/login}" class="header__action btn btn-primary-outline">Log In</a>
+                        <a th:href="@{/register}" class="header__action btn btn-primary">Create Account</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+		<main class="page">
+			<section class="course-page">
+				<div class="course-page__top">
+					<div class="container">
+						<div class="course-page__header">
+							<div class="course-page__logo">
+								<img th:src="@{/assets/img/courses/Angular-JS.png}" alt="Angular">
+							</div>
+							<h1 class="course-page__title title-xxl">
+								<span class="color-accent">Angular JS:</span> <br> Basic to Advance Level Coding
+							</h1>
+						</div>
+					</div>
+				</div>
+				<div class="course-page__body">
+					<div class="container">
+						<div class="course-page__columns">
+							<div class="course-page__column">
+								<div class="course-page__block">
+									<h2 class="course-page__caption color-accent">About The Course</h2>
+									<p class="course-page__desc"> Angular JS is a JavaScript-based open-source front-end web framework for developing single-page applications. It was maintained mainly by Google and a community of individuals and corporations. </p>
+								</div>
+								<div class="course-page__block">
+									<h2 class="course-page__caption color-accent">Objectives</h2>
+									<ul class="course-page__list">
+										<li>Utilizing AngularJS formats adequately</li>
+										<li>Questioning and adjusting information in various databases and getting to be plainly gifted with the API</li>
+										<li>Quickly making perplexing structures</li>
+										<li>Understanding two-way (proportional) information authoritative</li>
+										<li>Presenting route usefulness in web applications</li>
+										<li>Overseeing conditions with Injection frameworks</li>
+										<li>Securing web applications from dangers and pernicious clients</li>
+										<li>Building different AngularJS orders</li>
+										<li>Organizing the web application utilizing the vigorous index structure</li>
+										<li>Organizing, composing, and ultimately sending the application</li>
+									</ul>
+								</div>
+							</div>
+							<div class="course-page__column">
+								<div class="course-page__steps">
+									<h2 class="course-page__caption color-accent">Course Content</h2>
+									<ul class="course-page__steps-list">
+										<li class="course-page__step">
+											<button class="course-page__step-caption active">
+												<span class="course-page__step-name"> 01 HTML </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc active"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 02 CSS </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 03 Bootstrap </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 04 Javascript </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 05 DOM </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 06 Angular JS </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 07 Environment </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 08 MVC Architecture </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 09 Directives </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 10 Modules </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+										<li class="course-page__step">
+											<button class="course-page__step-caption">
+												<span class="course-page__step-name"> 11 Dependency Injection </span>
+												<span class="course-page__step-icon">
+													<img th:src="@{/assets/img/icons/chevron-grey.svg}" alt="icon">
+												</span>
+											</button>
+											<p class="course-page__step-desc"> Introduction >> Layers In Web >> Application >> Tags & Attribute >> Programming >> Audio >> Video >> Graphics </p>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="course-page__projects">
+							<h2 class="course-page__caption has-line">Angular JS Projects</h2>
+							<ul class="course-page__projects-list">
+								<li class="course-page__projects-item">
+									<a th:href="" class="course-page__project">
+										<span class="course-page__project-header">
+											<span class="course-page__project-icon">
+												<img th:src="@{/assets/img/icons/angular.svg}" alt="icon">
+											</span>
+											<span class="course-page__project-title"> Angular Hello World Project </span>
+										</span>
+										<span class="course-page__project-desc"> Hello, World offers a <br> tremendous opportunity to hone your skills if you are just <br> starting with Angular and Typescript. </span>
+									</a>
+								</li>
+								<li class="course-page__projects-item">
+									<a th:href="" class="course-page__project">
+										<span class="course-page__project-header">
+											<span class="course-page__project-icon">
+												<img th:src="@{/assets/img/icons/angular.svg}" alt="icon">
+											</span>
+											<span class="course-page__project-title"> Angular Bare Bones project </span>
+										</span>
+									</a>
+								</li>
+								<li class="course-page__projects-item">
+									<a th:href="" class="course-page__project">
+										<span class="course-page__project-header">
+											<span class="course-page__project-icon">
+												<img th:src="@{/assets/img/icons/angular.svg}" alt="icon">
+											</span>
+											<span class="course-page__project-title"> Data Binding In Forms </span>
+										</span>
+									</a>
+								</li>
+								<li class="course-page__projects-item">
+									<a th:href="" class="course-page__project">
+										<span class="course-page__project-header">
+											<span class="course-page__project-icon">
+												<img th:src="@{/assets/img/icons/angular.svg}" alt="icon">
+											</span>
+											<span class="course-page__project-title"> Angular Projects On Local Storage </span>
+										</span>
+									</a>
+								</li>
+								<li class="course-page__projects-item">
+									<a th:href="" class="course-page__project">
+										<span class="course-page__project-header">
+											<span class="course-page__project-icon">
+												<img th:src="@{/assets/img/icons/angular.svg}" alt="icon">
+											</span>
+											<span class="course-page__project-title"> AngularJS In Patterns </span>
+										</span>
+									</a>
+								</li>
+								<li class="course-page__projects-item">
+									<a th:href="" class="course-page__project">
+										<span class="course-page__project-header">
+											<span class="course-page__project-icon">
+												<img th:src="@{/assets/img/icons/angular.svg}" alt="icon">
+											</span>
+											<span class="course-page__project-title"> NGRX <br> Libraries </span>
+										</span>
+									</a>
+								</li>
+								<li class="course-page__projects-item">
+									<a th:href="" class="course-page__project">
+										<span class="course-page__project-header">
+											<span class="course-page__project-icon">
+												<img th:src="@{/assets/img/icons/angular.svg}" alt="icon">
+											</span>
+											<span class="course-page__project-title"> Data Binding In Forms </span>
+										</span>
+									</a>
+								</li>
+								<li class="course-page__projects-item">
+									<a th:href="" class="course-page__project">
+										<span class="course-page__project-header">
+											<span class="course-page__project-icon">
+												<img th:src="@{/assets/img/icons/angular.svg}" alt="icon">
+											</span>
+											<span class="course-page__project-title"> Admin Panel Framework </span>
+										</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="course-page__check">
+							<div class="course-page__check-title title-md"> Wanna check more about the course? </div>
+							<div class="course-page__check-actions">
+								<a th:href="" class="course-page__check-action">
+									<img th:src="@{/assets/img/icons/monitor.svg}" alt="icon"> Demo </a>
+								<a th:href="" class="course-page__check-action">
+									<img th:src="@{/assets/img/icons/clip.svg}" alt="icon"> Enroll Now </a>
+								<a th:href="" class="course-page__btn btn btn-primary">
+									<img th:src="@{/assets/img/icons/download-white.svg}" alt="icon"> Download Curriculam </a>
+							</div>
+						</div>
+						<div class="course-page__tools">
+							<h2 class="course-page__caption has-line">Tools & Platforms</h2>
+							<ul class="course-page__tools-list">
+								<li class="course-page__tools-item">
+									<img th:src="@{/assets/img/tools/01.svg}" alt="icon">
+								</li>
+								<li class="course-page__tools-item">
+									<img th:src="@{/assets/img/tools/02.svg}" alt="icon">
+								</li>
+								<li class="course-page__tools-item">
+									<img th:src="@{/assets/img/tools/03.svg}" alt="icon">
+								</li>
+								<li class="course-page__tools-item">
+									<img th:src="@{/assets/img/tools/04.svg}" alt="icon">
+								</li>
+								<li class="course-page__tools-item">
+									<img th:src="@{/assets/img/tools/05.svg}" alt="icon">
+								</li>
+								<li class="course-page__tools-item">
+									<img th:src="@{/assets/img/tools/06.svg}" alt="icon">
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__body">
+                    <div class="footer__main">
+                        <a th:href="@{/}" class="footer__logo">
+                            <img th:src="@{/assets/img/logo-white.svg}" alt="logotype">
+                        </a>
+                        <p class="footer__note">Let Us build your career together Be the first person to transform yourself with our unique & world class corporate level trainings.</p>
+                        <form action="#" class="footer__form form">
+                            <h3 class="form__caption">Subscribe Our Newsletter</h3>
+                            <div class="form__row">
+                                <input type="email" name="email" class="form__control" placeholder="Your Email address">
+                                <button type="submit" class="form__submit">
+                                    <img th:src="@{/assets/img/icons/arrow-right-white.svg}" alt="icon">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer__side">
+                        <nav class="footer__menu" aria-label="menu in footer">
+                            <h3 class="footer__title title-sm"> Quick <span class="color-accent">Links</span>
+                            </h3>
+                            <ul class="footer__menu-list">
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Our Story</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Best Courses</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Your FAQ’s</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Cancellation & Refunds</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Contact US</a></li>
+                            </ul>
+                        </nav>
+                        <div class="footer__contacts">
+                            <h3 class="footer__title title-sm"> Contact <span class="accent-color">Us</span>
+                            </h3>
+                            <ul class="footer__contacts-list">
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/location-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <address>Navakethan Complex, 6th Floor, 605, 606 A&P opp, CLock Tower, SD Road, Secunderabad, Telangana 500003</address>
+                                    </div>
+                                </li>
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/envelope-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <a th:href="@{mailto:info@ezyskills.in}">info@ezyskills.in</a>
+                                    </div>
+                                </li>
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/phone-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <a th:href="@{tel:+918428448903}">+91 8428448903</a>
+                                        <a th:href="@{tel:+919475484959}">+91 9475484959</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <div class="footer__links">
+                        <a th:href="@{/}" class="footer__link">Terms & Conditions</a>
+                        <a th:href="@{/}" class="footer__link">Privacy Policy</a>
+                    </div>
+                    <div class="footer__socials">
+                        <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>
+                        <a th:href="@{https://twitter.com}" class="footer__social"><img th:src="@{/assets/img/icons/twitter.svg}" alt="Twitter"></a>
+                        <a th:href="@{https://instagram.com}" class="footer__social"><img th:src="@{/assets/img/icons/instagram.svg}" alt="Instagram"></a>
+                        <a th:href="@{https://linkedin.com}" class="footer__social"><img th:src="@{/assets/img/icons/linkedin.svg}" alt="LinkedIn"></a>
+                        <a th:href="@{https://youtube.com}" class="footer__social"><img th:src="@{/assets/img/icons/youtube.svg}" alt="YouTube"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+	</div>
+</body>
+
+</html>
