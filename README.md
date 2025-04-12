@@ -1,23 +1,103 @@
 # diplom
 
-# Getting Started
+## Начало работы
+### Необходимые инструменты
+Для развертывания и разработки проекта вам понадобятся следующие инструменты:
+#### 1. **Java 21 или выше**
 
+Для Linux (Ubuntu)  использовать команду:
 
+```
+sudo apt update
+sudo apt install openjdk-21-jdk
+```
 
-### Reference Documentation
-For further reference, please consider the following sections:
+Проверить, что Java установлена корректно:
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/3.4.4/gradle-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.4.4/gradle-plugin/packaging-oci-image.html)
-* [Spring Web](https://docs.spring.io/spring-boot/3.4.4/reference/web/servlet.html)
-* [Thymeleaf](https://docs.spring.io/spring-boot/3.4.4/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/3.4.4/reference/using/devtools.html)
+```
+java -version
+```
 
-### Guides
-The following guides illustrate how to use some features concretely:
+#### 2. Gradle
+Установка Gradle на Linux (Ubuntu):
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
+```
+sudo apt update
+sudo apt install gradle
+```
+
+#### 3. PostgreSQL
+Установка PostgreSQL на Linux (Ubuntu):
+
+```
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+```
+Запуск PostgreSQL:
+
+```
+sudo service postgresql start
+```
+
+### Развёртывание приложения
+
+#### 1. Клонируйте репозиторий
+
+```bash
+git clone git@github.com:Hexlet-diplom/diplom.git
+cd diplom
+```
+
+#### 2. Настройка базы данных
+Откройте терминал и выполните команду для подключения к PostgreSQL:
+
+```
+psql -U postgres
+```
+После подключения введите следующие команды для создания нового пользователя и базы данных.
+
+Создание пользователя postgres с паролем 123 (Для примера я использовал его, можете создать своего пользователя и бд, а после указать свои значения в файле application-dev.yml и application-dev.yml)
+```
+CREATE USER postgres WITH PASSWORD '123';
+```
+
+Создание базы данных ezyskills и привязка её к пользователю postgres
+```
+CREATE DATABASE ezyskills WITH OWNER postgres;
+```
+
+Дайте пользователю все права на базу данных ezyskills
+```
+GRANT ALL PRIVILEGES ON DATABASE ezyskills TO postgres;
+```
+#### 3. Проверка
+
+Подключитесь к базе данных ezyskills от имени пользователя postgres или воспользуйтесь PgAdmin для регистрации БД:
+
+```
+\c ezyskills postgres
+```
+Проверьте, что база данных существует:
+
+```
+\l
+```
+Вы должны увидеть базу данных ezyskills в списке.
+
+#### 4. Сборка проекта
+
+Для сборки проекта используйте Gradle из корневой директории проекта:
+
+```
+./gradlew build
+```
+
+#### 5. Запуск приложения
+
+После сборки проекта вы можете запустить приложение с помощью следующей команды:
+
+```
+./gradlew bootRun
+```
+
+Приложение запустится, и вы сможете получить доступ к нему по адресу http://localhost:8080

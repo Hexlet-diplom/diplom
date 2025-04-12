@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:prod-db-host}:${DB_PORT:5432}/ezyskills
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    show-sql: false
+  thymeleaf:
+    cache: true
+  flyway:
+    baseline-on-migrate: true
+
+logging:
+  level:
+    org.springframework: WARN
