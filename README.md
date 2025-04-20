@@ -1,11 +1,37 @@
 # diplom
 
-## Начало работы
-### Необходимые инструменты
-Для развертывания и разработки проекта вам понадобятся следующие инструменты:
-#### 1. **Java 21 или выше**
+## Развертывание проекта на Linux
 
-Для Linux (Ubuntu)  использовать команду:
+#### Установка git (если не установлен)
+```
+sudo apt install git
+```
+Проверяем что git установлен
+```
+git --version
+```
+
+Настраиваем ключ доступа
+
+```
+git config --global user.name "Your name"
+git config --global user.email "Your email"
+
+shh-keygen -t rsa -b 4096 "Your email"
+cat ~/.ssh/id_rsa.pub
+```
+Копируем полученный код начиная с ssh-rsa и на сайте github в параметре settings/SSH and GPG keys нажимайте кнопку "New SSH key", называйте поле title как хотите и в поле ниже вставляйте скопированный ключ, сохраняем.
+
+Проверка работы
+
+```
+ssh -T git@github.com
+```
+Должно появиться что-то по типу "Hi username! You've successfully authenticated...."
+
+#### 1. **Java 21**
+
+Для Linux (Ubuntu) использовать команду:
 
 ```
 sudo apt update
@@ -18,13 +44,61 @@ sudo apt install openjdk-21-jdk
 java -version
 ```
 
+Настраиваем переменную JAVA_HOME, узнаем адрес установки файла:
+```
+sudo update-alternatives --config java
+```
+Команда покажет адрес папки языка
+
+Открываем профиль shell (это может быть ~/.bashrc для bash терминала или ~/.zshrc для Zsh, проверить можно командой: ps -p $$) c помощью nano или vim
+и добавляем необходимый код
+
+```
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd (Путь до папки java-21-openjdk)
+export PATH=$JAVA_HOME/bin:$PATH
+```
+
+Выполняем перезагрузку терминала
+```
+source ~/.zshrc (или ./.bashrc)
+```
+Проверяем переменную
+
+```
+echo $JAVA_HOME
+```
+должен появиться путь до папки openjdk
+
 #### 2. Gradle
 Установка Gradle на Linux (Ubuntu):
 
+Перейди на сайт: https://gradle.org/releases/
+
+Скачай последнюю версию binary-only. Скачанный файл будет иметь расширение .zip.
+
+Из корневой директории ОС (/) выполнить
 ```
-sudo apt update
-sudo apt install gradle
+mkdir /opt/gradle
 ```
+Перейти в Downloads
+```
+unzip -d /opt/gradle gradle-8.13-bin.zip
+ls /opt/gradle/gradle-8.13
+```
+
+Конфигурация переменной среды PATH добавить в .zshrc или .bashrc:
+
+```
+export GRADLE_HOME=/opt/gradle/gradle-8.13
+export PATH=$GRADLE_HOME/bin:$PATH
+```
+
+Проверка что всё работает
+
+```
+gradle -v
+```
+появится Gradle 8.13
 
 #### 3. PostgreSQL
 Установка PostgreSQL на Linux (Ubuntu):
@@ -54,13 +128,13 @@ cd diplom
 Откройте терминал и выполните команду для подключения к PostgreSQL:
 
 ```
-psql -U postgres
+sudo -u postgres psql
 ```
-После подключения введите следующие команды для создания нового пользователя и базы данных.
+После подключения введите следующие команды для создания пароля для пользователя и базу данных.
 
-Создание пользователя postgres с паролем 123 (Для примера я использовал его, можете создать своего пользователя и бд, а после указать свои значения в файле application-dev.yml и application-dev.yml)
+Изменение пароля для пользователя postgres на 123 (Для примера я использовал его, можете создать своего пользователя и бд, а после указать свои значения в файле application-dev.yml и application-dev.yml)
 ```
-CREATE USER postgres WITH PASSWORD '123';
+ALTER USER postgres WITH PASSWORD '123';
 ```
 
 Создание базы данных ezyskills и привязка её к пользователю postgres
@@ -104,7 +178,7 @@ GRANT ALL PRIVILEGES ON DATABASE ezyskills TO postgres;
 
 Приложение запустится, и вы сможете получить доступ к нему по адресу http://localhost:8080
 
-## Windows
+## Развертывание проекта на Windows
 
 ### 1. Скачать установщик Git
 
@@ -129,12 +203,12 @@ git config --global user.name "Твое Имя"
 git config --global user.email "you@example.com"
 ```
 
-чтобы настроить SSH-ключи для GitHub воспользуйся памяткой
+чтобы настроить SSH-ключи для GitHub воспользуйся памяткой выше
 
 ### Установка JDK
 Скачай и установи JDK с официального сайта: https://www.oracle.com/java/technologies/downloads/#jdk21-windows
 
-в параметрах выбери JDK 21 установщик для Windows: x64 Installer.
+в параметрах выбери JDK 21 (не JDK 24 обратите внимание!!!) установщик для Windows: x64 Installer.
 Запусти скачанный .exe файл.
 
 после установки, появится папка по пути: C:\Program Files\Java\jdk-21\
@@ -216,7 +290,7 @@ CREATE DATABASE ezyskills;
 \l
 ```
 Вы должны увидеть базу данных ezyskills в списке.
-
+ 
 ### Сборка проекта
 
 В visual studio  для сборки проекта используйте терминал powershell из корневой директории проекта ,но перед этим следует немного подождать чтобы студия могла идентифицировать язык java и сборщик проекта:
