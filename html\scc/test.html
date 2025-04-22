@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по веб-разработке</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <main class="container test-container">
+        <h1>Проверка знаний</h1>
+        
+        <form id="quizForm">
+            <div class="question-card">
+                <h3>1. Какой тег используется для создания ссылки?</h3>
+                <label>
+                    <input type="radio" name="q1" value="a">
+                    &lt;a&gt;
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b">
+                    &lt;link&gt;
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c">
+                    &lt;href&gt;
+                </label>
+            </div>
+
+            <div class="question-card">
+                <h3>2. Как подключить CSS к HTML?</h3>
+                <label>
+                    <input type="radio" name="q2" value="a">
+                    Через тег &lt;style&gt;
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b">
+                    Через атрибут style
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c">
+                    Через файл .css
+                </label>
+            </div>
+
+            <div class="question-card">
+                <h3>3. Для чего используется JavaScript?</h3>
+                <label>
+                    <input type="radio" name="q3" value="a">
+                    Для стилизации страницы
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b">
+                    Для добавления интерактивности
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c">
+                    Для создания структуры страницы
+                </label>
+            </div>
+
+            <button type="button" class="check-button" onclick="checkTest()">Проверить ответы</button>
+        </form>
+    </main>
+</body>
+</html>

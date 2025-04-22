@@ -18,7 +18,7 @@ git config --global user.name "Your name"
 git config --global user.email "Your email"
 
 shh-keygen -t rsa -b 4096 "Your email"
-cat ~/.ssh/id_rsa.pub
+
 ```
 Копируем полученный код начиная с ssh-rsa и на сайте github в параметре settings/SSH and GPG keys нажимайте кнопку "New SSH key", называйте поле title как хотите и в поле ниже вставляйте скопированный ключ, сохраняем.
 
