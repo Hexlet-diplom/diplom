@@ -36,6 +36,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/register", "/login", "/", "/course-selector","/courses", "/pricing", "/faq", "/contacts", "/assets/**").permitAll() // Разрешаем доступ к этим страницам
+                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated() // Остальные страницы требуют аутентификации
                 )
                 .formLogin(form -> form
