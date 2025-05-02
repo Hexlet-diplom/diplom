@@ -17,8 +17,9 @@
     <meta name="apple-mobile-web-app-title" content="EzySkills" />
     <link rel="manifest" th:src="@{/assets/site.webmanifest}" />
     <!-- styles -->
-    <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
-    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.css}">
 </head>
 
 <body>
@@ -45,11 +46,10 @@
                     <div sec:authorize="!isAuthenticated()" class="header__actions">
                         <a th:href="@{/login}" class="header__action btn btn-primary-outline">Log In</a>
                         <a th:href="@{/register}" class="header__action btn btn-primary">Create Account</a>
-
                     </div>
                     <div sec:authorize="isAuthenticated()" class="header__actions">
                         <form th:action="@{/logout}" method="post">
-                            <button type="submit" class="header__action btn btn-primary-outline">logout</button>
+                            <button type="submit" class="header__action btn btn-white-outline">logout</button>
                         </form>
                     </div>
 				</div>
@@ -68,7 +68,7 @@
 								<button type="submit" class="promo__form-submit">Search</button>
 							</form>
 							<div class="promo__tags">
-								<a href="" class="promo__tag active">Cloud Computing</a>
+								<a href="" class="promo__tag">Cloud Computing</a>
 								<a href="" class="promo__tag">Cyber Security</a>
 								<a href="" class="promo__tag">DevOps</a>
 								<a href="" class="promo__tag">Data Science</a>
@@ -113,66 +113,24 @@
 			<section class="platforms">
 				<div class="container">
 					<div class="platforms__body">
-						<h2 class="platforms__title title-xl"> World’s <br> First AI Based <span class="color-accent"> Online Learning Platform</span>
-						</h2>
-						<div class="platforms__slider">
-							<div class="platforms__slides">
-								<div class="platform">
-									<div class="platform__main">
-										<div class="platform__logo">
-											<img th:src="@{/assets/img/logo-blue.svg}" alt="logo">
-										</div>
-										<div class="platform__name"> AI&nbsp;Based <strong class="color-accent">Course Selector</strong>
-										</div>
-									</div>
-									<div class="platform__image">
-										<img th:src="@{/assets/img/platforms/AICourseSelector.svg}" alt="picture">
-									</div>
-								</div>
-								<div class="platform">
-									<div class="platform__main">
-										<div class="platform__logo">
-											<img th:src="@{/assets/img/logo-blue.svg}" alt="logo">
-										</div>
-										<div class="platform__name"> AI Based <strong class="color-accent">Scenarios</strong>
-										</div>
-									</div>
-									<div class="platform__image">
-										<img th:src="@{/assets/img/platforms/AIScenarios.svg}" alt="picture">
-									</div>
-								</div>
-								<div class="platform">
-									<div class="platform__main">
-										<div class="platform__logo">
-											<img th:src="@{/assets/img/logo-blue.svg}" alt="logo">
-										</div>
-										<div class="platform__name"> AI Based <strong class="color-accent">Quizs/Tests</strong>
-										</div>
-									</div>
-									<div class="platform__image">
-										<img th:src="@{/assets/img/platforms/AIQuizs.svg}" alt="picture">
-									</div>
-								</div>
-								<div class="platform">
-									<div class="platform__main">
-										<div class="platform__logo">
-											<img th:src="@{/assets/img/logo-blue.svg}" alt="logo">
-										</div>
-										<div class="platform__name"> AI Based <strong class="color-accent"><small>Gamification</small></strong>
-										</div>
-									</div>
-									<div class="platform__image">
-										<img th:src="@{/assets/img/platforms/AIGamification.svg}" alt="picture">
-									</div>
-								</div>
-							</div>
-							<div class="platforms__slider-pagination">
-								<span class="platforms__slider-pagination-bullet active"></span>
-								<span class="platforms__slider-pagination-bullet"></span>
-								<span class="platforms__slider-pagination-bullet"></span>
-								<span class="platforms__slider-pagination-bullet"></span>
-							</div>
-						</div>
+                        <h2 class="platforms__title title-xl"> World’s <br> First AI Based <span class="color-accent"> Online Learning Platform</span></h2>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img th:src="@{/assets/img/slides/img_1.png}" alt="Course Selector" class="slide-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img th:src="@{/assets/img/slides/img_2.png}" alt="Scenarios" class="slide-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img th:src="@{/assets/img/slides/img_3.png}" alt="Quiz/Tests" class="slide-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img th:src="@{/assets/img/slides/img_4.png}" alt="Gamification" class="slide-image">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
 					</div>
 				</div>
 			</section>
@@ -488,7 +446,7 @@
 							</div>
 						</li>
 					</ul>
-					<a th:href="@{/course-page}" class="courses__more btn btn-secondary">View All Courses</a>
+					<a th:href="@{/courses}" class="courses__more btn btn-secondary">View All Courses</a>
 				</div>
 			</section>
 			<section class="achievements">
@@ -525,118 +483,234 @@
 						<span class="color-accent">Mentors & Trainers</span>
 					</h2>
 					<div class="mentors__slider">
-						<div class="mentors__slide mentor">
-							<div class="mentor__label">
-								<img th:src="@{/assets/img/icons/cup.png}" alt="icon"> BEST TRAINER
-							</div>
-							<div class="mentor__header">
-								<div class="mentor__thumb">
-									<img th:src="@{/assets/img/mentors/01.svg}" alt="thumb">
-								</div>
-								<div class="mentor__info">
-									<div class="mentor__name">Sandeep</div>
-									<div class="mentor__position">.Net & Azure</div>
-									<div class="mentor__rate">
-										<div class="mentor__rate-stars">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-grey.svg}" alt="icon">
-										</div>
-										<div class="mentor__rate-reviews">72 Reviews</div>
-									</div>
-									<ul class="mentor__props">
-										<li class="mentor__props-row">
-											<div class="mentor__props-icon">
-												<img th:src="@{/assets/img/icons/doc.svg}" alt="icon">
-											</div>
-											<div class="mentor__props-text"> 39 Modules </div>
-										</li>
-										<li class="mentor__props-row">
-											<div class="mentor__props-icon">
-												<img th:src="@{/assets/img/icons/students.svg}" alt="icon">
-											</div>
-											<div class="mentor__props-text"> 375 Students </div>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<p class="mentor__desc">Sandeep is a Software Developer who expertised in .NET & Azure for more than 24 years and training 100’s of students to accompolish their goals & dreams.</p>
-						</div>
-						<div class="mentors__slide mentor">
-							<div class="mentor__header">
-								<div class="mentor__thumb">
-									<img th:src="@{/assets/img/mentors/02.svg}" alt="thumb">
-								</div>
-								<div class="mentor__info">
-									<div class="mentor__name">Sudhansu</div>
-									<div class="mentor__position">Cloud & Cyber Security, Forensic</div>
-									<div class="mentor__rate">
-										<div class="mentor__rate-stars">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-grey.svg}" alt="icon">
-										</div>
-										<div class="mentor__rate-reviews">38 Reviews</div>
-									</div>
-									<ul class="mentor__props">
-										<li class="mentor__props-row">
-											<div class="mentor__props-icon">
-												<img th:src="@{/assets/img/icons/doc.svg}" alt="icon">
-											</div>
-											<div class="mentor__props-text"> 27 Modules </div>
-										</li>
-										<li class="mentor__props-row">
-											<div class="mentor__props-icon">
-												<img th:src="@{/assets/img/icons/students.svg}" alt="icon">
-											</div>
-											<div class="mentor__props-text"> 169 Students </div>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<p class="mentor__desc"> Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams. </p>
-						</div>
-						<div class="mentors__slide mentor">
-							<div class="mentor__header">
-								<div class="mentor__thumb">
-									<img th:src="@{/assets/img/mentors/03.svg}" alt="thumb">
-								</div>
-								<div class="mentor__info">
-									<div class="mentor__name">Ruchika Tuteja</div>
-									<div class="mentor__position">UIUX Trainer</div>
-									<div class="mentor__rate">
-										<div class="mentor__rate-stars">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
-											<img th:src="@{/assets/img/icons/star-grey.svg}" alt="icon">
-										</div>
-										<div class="mentor__rate-reviews">65 Reviews</div>
-									</div>
-									<ul class="mentor__props">
-										<li class="mentor__props-row">
-											<div class="mentor__props-icon">
-												<img th:src="@{/assets/img/icons/doc.svg}" alt="icon">
-											</div>
-											<div class="mentor__props-text"> 44 Modules </div>
-										</li>
-										<li class="mentor__props-row">
-											<div class="mentor__props-icon">
-												<img th:src="@{/assets/img/icons/students.svg}" alt="icon">
-											</div>
-											<div class="mentor__props-text"> 212 Students </div>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<p class="mentor__desc"> I have 9 years of experience in Fullstack development. Have worked on multiple projects on. I can provide realtime simulation of these various development languages and framework by means of multiple projects. Can provide guidance... </p>
-						</div>
-					</div>
+                        <div class="train-track">
+                            <div class="train-container">
+                                <div class="mentors__slide mentor">
+                                <div class="mentor__label">
+                                    <img th:src="@{/assets/img/icons/cup.png}" alt="icon"> BEST TRAINER
+                                </div>
+                                <div class="mentor__header">
+                                    <div class="mentor__thumb">
+                                        <img th:src="@{/assets/img/mentors/01.svg}" alt="thumb">
+                                    </div>
+                                    <div class="mentor__info">
+                                        <div class="mentor__name">Sandeep</div>
+                                        <div class="mentor__position">.Net & Azure</div>
+                                        <div class="mentor__rate">
+                                            <div class="mentor__rate-stars">
+                                                <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                <img th:src="@{/assets/img/icons/star-grey.svg}" alt="icon">
+                                            </div>
+                                            <div class="mentor__rate-reviews">72 Reviews</div>
+                                        </div>
+                                        <ul class="mentor__props">
+                                            <li class="mentor__props-row">
+                                                <div class="mentor__props-icon">
+                                                    <img th:src="@{/assets/img/icons/doc.svg}" alt="icon">
+                                                </div>
+                                                <div class="mentor__props-text"> 39 Modules </div>
+                                            </li>
+                                            <li class="mentor__props-row">
+                                                <div class="mentor__props-icon">
+                                                    <img th:src="@{/assets/img/icons/students.svg}" alt="icon">
+                                                </div>
+                                                <div class="mentor__props-text"> 375 Students </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="mentor__desc">Sandeep is a Software Developer who expertised in .NET & Azure for more than 24 years and training 100’s of students to accompolish their goals & dreams.</p>
+                            </div>
+                                <div class="mentors__slide mentor">
+                                    <div class="mentor__header">
+                                        <div class="mentor__thumb">
+                                            <img th:src="@{/assets/img/mentors/02.svg}" alt="thumb">
+                                        </div>
+                                        <div class="mentor__info">
+                                            <div class="mentor__name">Sudhansu</div>
+                                            <div class="mentor__position">Cloud & Cyber Security, Forensic</div>
+                                            <div class="mentor__rate">
+                                                <div class="mentor__rate-stars">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-grey.svg}" alt="icon">
+                                                </div>
+                                                <div class="mentor__rate-reviews">38 Reviews</div>
+                                            </div>
+                                            <ul class="mentor__props">
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/doc.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 27 Modules </div>
+                                                </li>
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/students.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 169 Students </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <p class="mentor__desc"> Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams. </p>
+                                </div>
+                                <div class="mentors__slide mentor">
+                                    <div class="mentor__header">
+                                        <div class="mentor__thumb">
+                                            <img th:src="@{/assets/img/mentors/03.svg}" alt="thumb">
+                                        </div>
+                                        <div class="mentor__info">
+                                            <div class="mentor__name">Ruchika Tuteja</div>
+                                            <div class="mentor__position">UIUX Trainer</div>
+                                            <div class="mentor__rate">
+                                                <div class="mentor__rate-stars">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-grey.svg}" alt="icon">
+                                                </div>
+                                                <div class="mentor__rate-reviews">65 Reviews</div>
+                                            </div>
+                                            <ul class="mentor__props">
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/doc.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 44 Modules </div>
+                                                </li>
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/students.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 212 Students </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <p class="mentor__desc"> I have 9 years of experience in Fullstack development. Have worked on multiple projects on. I can provide realtime simulation of these various development languages and framework by means of multiple projects. Can provide guidance... </p>
+                                </div>
+                                <div class="mentors__slide mentor">
+                                    <div class="mentor__label">
+                                        <img th:src="@{/assets/img/icons/cup.png}" alt="icon"> BEST TRAINER
+                                    </div>
+                                    <div class="mentor__header">
+                                        <div class="mentor__thumb">
+                                            <img th:src="@{/assets/img/mentors/01.svg}" alt="thumb">
+                                        </div>
+                                        <div class="mentor__info">
+                                            <div class="mentor__name">Sandeep</div>
+                                            <div class="mentor__position">.Net & Azure</div>
+                                            <div class="mentor__rate">
+                                                <div class="mentor__rate-stars">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-grey.svg}" alt="icon">
+                                                </div>
+                                                <div class="mentor__rate-reviews">72 Reviews</div>
+                                            </div>
+                                            <ul class="mentor__props">
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/doc.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 39 Modules </div>
+                                                </li>
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/students.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 375 Students </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <p class="mentor__desc">Sandeep is a Software Developer who expertised in .NET & Azure for more than 24 years and training 100’s of students to accompolish their goals & dreams.</p>
+                                </div>
+                                <div class="mentors__slide mentor">
+                                    <div class="mentor__header">
+                                        <div class="mentor__thumb">
+                                            <img th:src="@{/assets/img/mentors/02.svg}" alt="thumb">
+                                        </div>
+                                        <div class="mentor__info">
+                                            <div class="mentor__name">Sudhansu</div>
+                                            <div class="mentor__position">Cloud & Cyber Security, Forensic</div>
+                                            <div class="mentor__rate">
+                                                <div class="mentor__rate-stars">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-grey.svg}" alt="icon">
+                                                </div>
+                                                <div class="mentor__rate-reviews">38 Reviews</div>
+                                            </div>
+                                            <ul class="mentor__props">
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/doc.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 27 Modules </div>
+                                                </li>
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/students.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 169 Students </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <p class="mentor__desc"> Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams. </p>
+                                </div>
+                                <div class="mentors__slide mentor">
+                                    <div class="mentor__header">
+                                        <div class="mentor__thumb">
+                                            <img th:src="@{/assets/img/mentors/03.svg}" alt="thumb">
+                                        </div>
+                                        <div class="mentor__info">
+                                            <div class="mentor__name">Ruchika Tuteja</div>
+                                            <div class="mentor__position">UIUX Trainer</div>
+                                            <div class="mentor__rate">
+                                                <div class="mentor__rate-stars">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-yellow.svg}" alt="icon">
+                                                    <img th:src="@{/assets/img/icons/star-grey.svg}" alt="icon">
+                                                </div>
+                                                <div class="mentor__rate-reviews">65 Reviews</div>
+                                            </div>
+                                            <ul class="mentor__props">
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/doc.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 44 Modules </div>
+                                                </li>
+                                                <li class="mentor__props-row">
+                                                    <div class="mentor__props-icon">
+                                                        <img th:src="@{/assets/img/icons/students.svg}" alt="icon">
+                                                    </div>
+                                                    <div class="mentor__props-text"> 212 Students </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <p class="mentor__desc"> I have 9 years of experience in Fullstack development. Have worked on multiple projects on. I can provide realtime simulation of these various development languages and framework by means of multiple projects. Can provide guidance... </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 				</div>
 			</section>
 			<section class="certs">
@@ -702,12 +776,12 @@
 							<h3 class="footer__title title-sm"> Quick <span class="color-accent">Links</span>
 							</h3>
 							<ul class="footer__menu-list">
-								<li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
-								<li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Our Story</a></li>
-								<li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Best Courses</a></li>
-								<li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Your FAQ’s</a></li>
-								<li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Cancellation & Refunds</a></li>
-								<li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Contact US</a></li>
+								<li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Home</a></li>
+								<li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Our Story</a></li>
+								<li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Best Courses</a></li>
+								<li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Your FAQ’s</a></li>
+								<li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Cancellation & Refunds</a></li>
+								<li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Contact US</a></li>
 							</ul>
 						</nav>
 						<div class="footer__contacts">
@@ -735,8 +809,8 @@
 										<img th:src="@{/assets/img/icons/phone-white.svg}" alt="icon">
 									</div>
 									<div class="footer__contacts-body">
-										<a th:href="@{tel:+918428448903}">+91 8428448903</a>
-										<a th:href="@{tel:+919475484959}">+91 9475484959</a>
+                                        <div><a th:href="@{tel:+918428448903}">+91 8428448903</a></div>
+                                        <div><a th:href="@{tel:+919475484959}">+91 9475484959</a></div>
 									</div>
 								</li>
 							</ul>
@@ -745,8 +819,8 @@
 				</div>
 				<div class="footer__bottom">
 					<div class="footer__links">
-						<a th:href="@{/}" class="footer__link">Terms & Conditions</a>
-						<a th:href="@{/}" class="footer__link">Privacy Policy</a>
+						<a th:href="@{#}" class="footer__link">Terms & Conditions</a>
+						<a th:href="@{#}" class="footer__link">Privacy Policy</a>
 					</div>
 					<div class="footer__socials">
                         <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>
@@ -759,6 +833,60 @@
 			</div>
 		</footer>
 	</div>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            direction: "horizontal",
+            loop: true,
 
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            effect: 'creative',
+            creativeEffect: {
+                prev: {
+                    translate: [-120, 0, -200],
+                    opacity: 0.5
+                },
+                next: {
+                    translate: [120, 0, -200],
+                    opacity: 0.5
+                }
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.train-container');
+            const track = document.querySelector('.train-track');
+
+            const cards = container.innerHTML;
+            container.insertAdjacentHTML('beforeend', cards);
+
+            function setupWidth() {
+                const containerWidth = container.scrollWidth / 2;
+                container.style.width = `${containerWidth}px`;
+                track.style.width = `${containerWidth * 2}px`;
+            }
+
+            // 3. Запускаем и обновляем при ресайзе
+            setupWidth();
+            window.addEventListener('resize', setupWidth);
+
+            // 4. Контроль скорости
+            function setSpeed(speed) { // speed - секунд на полный цикл
+                container.style.animationDuration = `${speed}s`;
+            }
+
+            setSpeed(60); // Начальная скорость
+        });
+    </script>
+</body>
 </html>
