@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,10 +36,11 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/register", "/login", "/", "/course-selector","/courses", "/pricing", "/faq", "/contacts", "/assets/**").permitAll() // Разрешаем доступ к этим страницам
+                        .requestMatchers("/register", "/login", "/", "/course-selector","/courses", "/pricing", "/faq", "/assets/**").permitAll() // Разрешаем доступ к этим страницам
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated() // Остальные страницы требуют аутентификации
                 )
+                .csrf(Customizer.withDefaults())
                 .formLogin(form -> form
                         .loginPage("/login")// Страница входа
                         .successHandler(authenticationSuccessHandler())
@@ -49,7 +51,6 @@ public class WebSecurityConfig {
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                         .permitAll());
-
         return http.build();
     }
 
