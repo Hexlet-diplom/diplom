@@ -71,7 +71,8 @@ public class WebSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return email -> {
-            User user = userRepository.findByEmail(email)
+            String normalizedEmail = email.toLowerCase();
+            User user = userRepository.findByEmail(normalizedEmail)
                     .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
             var authorities = user.getRoles().stream()

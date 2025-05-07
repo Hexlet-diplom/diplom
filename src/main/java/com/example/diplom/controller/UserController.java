@@ -50,7 +50,7 @@ public class UserController {
             return "registration/register";
         }
 
-        if (userRepository.existsByEmail(registrationDto.getEmail())) {
+        if (userRepository.existsByEmail(registrationDto.getEmail().toLowerCase())) {
             bindingResult.rejectValue("email", "error.registrationDto", "Email is already in use");
         }
 

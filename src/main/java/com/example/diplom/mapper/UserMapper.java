@@ -26,12 +26,12 @@ public class UserMapper {
 
     public User toEntity(RegistrationDto dto) {
 
-        if (userRepository.existsByEmail(dto.getEmail())) {
+        if (userRepository.existsByEmail(dto.getEmail().toLowerCase())) {
             throw new RuntimeException("User with email " + dto.getEmail() + " already exists.");
         }
 
         User user = new User();
-        user.setEmail(dto.getEmail());
+        user.setEmail(dto.getEmail().toLowerCase());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
 
         LocalDateTime now = LocalDateTime.now();
