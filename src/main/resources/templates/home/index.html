@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<title>Ezyskills | Home</title>
@@ -49,7 +50,7 @@
                     </div>
                     <div sec:authorize="isAuthenticated()" class="header__actions">
                         <form th:action="@{/logout}" method="post">
-                            <button type="submit" class="header__action btn btn-white-outline">logout</button>
+                            <button type="submit" class="header__action btn btn-primary-outline">logout</button>
                         </form>
                     </div>
 				</div>
@@ -801,7 +802,7 @@
 										<img th:src="@{/assets/img/icons/envelope-white.svg}" alt="icon">
 									</div>
 									<div class="footer__contacts-body">
-										<a th:href="@{mailto:info@ezyskills.in}">info@ezyskills.in</a>
+                                        <a th:href="@{'mailto:info@ezyskills.in'}">info@ezyskills.in</a>
 									</div>
 								</li>
 								<li class="footer__contacts-item">
@@ -876,16 +877,14 @@
                 track.style.width = `${containerWidth * 2}px`;
             }
 
-            // 3. Запускаем и обновляем при ресайзе
             setupWidth();
             window.addEventListener('resize', setupWidth);
 
-            // 4. Контроль скорости
             function setSpeed(speed) { // speed - секунд на полный цикл
                 container.style.animationDuration = `${speed}s`;
             }
 
-            setSpeed(60); // Начальная скорость
+            setSpeed(60);
         });
     </script>
 </body>

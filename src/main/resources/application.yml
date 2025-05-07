@@ -21,6 +21,24 @@ spring:
     show-sql: true
 
 
+  mail:
+    host: smtp.yandex.com
+    port: 465
+    username: ezyskills@yandex.ru
+    password: "icxbssfrpmxudwcd"
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+          starttls:
+            enable: false
+          connectiontimeout: 10000
+          timeout: 10000
+          writetimeout: 10000
+
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
@@ -35,4 +53,8 @@ logging:
     org.springframework.security: DEBUG
     org.springframework.security.authentication: DEBUG
     org.springframework.security.web.authentication: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.boot.autoconfigure: DEBUG
 
+support:
+  email: ezyskills@yandex.ru
