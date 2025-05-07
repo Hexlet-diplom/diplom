@@ -39,8 +39,8 @@ public class UserMapper {
         user.setUpdatedAt(now);
 
         // Получение роли по имени
-        Role userRole = roleRepository.findByName("ROLE_USER")
-                .orElseThrow(() -> new RuntimeException("Role 'ROLE_USER' not found"));
+        Role userRole = roleRepository.findByName("USER")
+                .orElseThrow(() -> new RuntimeException("Role 'USER' not found"));
         user.setRoles(Set.of(userRole));
 
         return user;

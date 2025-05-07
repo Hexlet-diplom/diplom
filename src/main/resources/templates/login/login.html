@@ -67,18 +67,6 @@
                         </div>
                         <button type="submit" class="form__btn btn btn-sm btn-secondary">Login</button>
                         <div class="form__desc">Already Created? <a th:href="@{/login}" class="form__desc-link">Login Here</a></div>
-                        <span class="form__separator">or</span>
-                        <div class="form__socials form__socials_column">
-                            <a th:href="@{/auth/google}" class="form__social google-btn">
-                                <img th:src="@{/assets/img/icons/google.png}" alt="google logo"> Login with Google
-                            </a>
-                            <a th:href="@{/auth/facebook}" class="form__social facebook-btn">
-                                <img th:src="@{/assets/img/icons/facebook-square.svg}" alt="facebook logo"> Login with Facebook
-                            </a>
-                            <a th:href="@{/auth/apple}" class="form__social iphone-btn">
-                                <img th:src="@{/assets/img/icons/apple.svg}" alt="apple logo"> Login with Apple
-                            </a>
-                        </div>
                         <div class="form__privacy">
                             By continuing, you agree to the <a th:href="@{/terms}">Terms of Service</a> and <a th:href="@{/privacy}">Privacy Policy</a>
                         </div>
@@ -116,11 +104,11 @@
                         <h3 class="footer__title title-sm">Quick <span class="color-accent">Links</span></h3>
                         <ul class="footer__menu-list">
                             <li><a th:href="@{/}" class="footer__menu-link">Home</a></li>
-                            <li><a th:href="@{/about}" class="footer__menu-link">Our Story</a></li>
-                            <li><a th:href="@{/courses}" class="footer__menu-link">Best Courses</a></li>
-                            <li><a th:href="@{/faq}" class="footer__menu-link">Your FAQ’s</a></li>
-                            <li><a th:href="@{/refund}" class="footer__menu-link">Cancellation & Refunds</a></li>
-                            <li><a th:href="@{/contacts}" class="footer__menu-link">Contact US</a></li>
+                            <li><a th:href="@{#}" class="footer__menu-link">Our Story</a></li>
+                            <li><a th:href="@{#}" class="footer__menu-link">Best Courses</a></li>
+                            <li><a th:href="@{#}" class="footer__menu-link">Your FAQ’s</a></li>
+                            <li><a th:href="@{#}" class="footer__menu-link">Cancellation & Refunds</a></li>
+                            <li><a th:href="@{#}" class="footer__menu-link">Contact US</a></li>
                         </ul>
                     </nav>
                     <div class="footer__contacts">
@@ -139,7 +127,7 @@
                                     <img th:src="@{/assets/img/icons/envelope-white.svg}" alt="icon">
                                 </div>
                                 <div class="footer__contacts-body">
-                                    <a href="mailto:info@ezyskills.in">info@ezyskills.in</a>
+                                    <a th:href="@{'mailto:info@ezyskills.in'}">info@ezyskills.in</a>
                                 </div>
                             </li>
                             <li>
@@ -147,8 +135,8 @@
                                     <img th:src="@{/assets/img/icons/phone-white.svg}" alt="icon">
                                 </div>
                                 <div class="footer__contacts-body">
-                                    <a href="tel:+918428448903">+91 8428448903</a>
-                                    <a href="tel:+919475484959">+91 9475484959</a>
+                                    <div><a th:href="@{tel:+918428448903}">+91 8428448903</a></div>
+                                    <div><a th:href="@{tel:+919475484959}">+91 9475484959</a></div>
                                 </div>
                             </li>
                         </ul>
@@ -157,8 +145,8 @@
             </div>
             <div class="footer__bottom">
                 <div class="footer__links">
-                    <a th:href="@{/terms}" class="footer__link">Terms & Conditions</a>
-                    <a th:href="@{/privacy}" class="footer__link">Privacy Policy</a>
+                    <a th:href="@{#}" class="footer__link">Terms & Conditions</a>
+                    <a th:hre class="footer__link">Privacy Policy</a>
                 </div>
                 <div class="footer__socials">
                     <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>

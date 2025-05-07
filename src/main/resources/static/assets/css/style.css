@@ -607,6 +607,10 @@
   color: #183b56;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .btn {
   position: relative;
   z-index: 1;
@@ -1339,6 +1343,22 @@ body {
   padding: 2.5rem 0 2.5rem;
 }
 
+.swiper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.swiper-pagination {
+  position: relative;
+  --swiper-pagination-top: 30px;
+}
+
+.swiper-pagination-bullet-active {
+  --swiper-pagination-color: #FF914CFF;
+  transform: scale(1.2);
+}
+
+
 .platforms__body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1348,6 +1368,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 2rem;
+  overflow: hidden;
 }
 
 .platforms__title {
@@ -1817,6 +1838,22 @@ body {
           align-items: flex-start;
   gap: 4.96rem;
   position: relative;
+}
+
+.train-track {
+  display: flex;
+  width: 200%; /* Ключевое изменение! */
+}
+
+.train-container {
+  display: flex;
+  flex-shrink: 0;
+  animation: scroll 60s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .mentors__slider::before {

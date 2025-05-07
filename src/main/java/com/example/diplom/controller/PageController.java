@@ -31,8 +31,4 @@ public class PageController {
         return "faq/faq";
     }
 
-    @GetMapping("/contacts")
-    public String contacts() {
-        return "contacts/contacts";
-    }
 }
