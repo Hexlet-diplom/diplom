@@ -1,6 +1,7 @@
 spring:
   application:
     name: diplom
+
   main:
     banner-mode: off
     allow-bean-definition-overriding: true
@@ -19,7 +20,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
 
   mail:
     host: smtp.yandex.com
