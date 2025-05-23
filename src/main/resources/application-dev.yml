@@ -2,23 +2,29 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/ezyskills
+    driver-class-name: org.postgresql.Driver
     username: postgres
     password: 123
 
   jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 
   thymeleaf:
     cache: false
 
   flyway:
+    enabled: true
     baseline-on-migrate: true
+    locations: classpath:db/migration
 
   mail:
-    host: smtp.yandex.com
+    host: smtp.yandex.ru
     port: 465
     username: ezyskills@yandex.ru
-    password: "icxbssfrpmxudwcd"
+    password: "ikjqtdwsflxebsgs"
     protocol: smtp
     properties:
       mail:
@@ -37,6 +43,7 @@ logging:
   level:
     org.springframework: INFO
     org.springframework.security: DEBUG
+    org.flywaydb: DEBUG
 
 support:
   email: ezyskills@yandex.ru

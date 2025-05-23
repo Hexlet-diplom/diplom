@@ -63,7 +63,7 @@
 				<div class="contacts__body">
 					<div class="container">
 						<div class="contacts__wrapper">
-							<form th:action="@{/contacts}" method="post" th:object="${contactFormDto}" id="contactFormDto" class="contacts__form">
+							<form th:action="@{/contacts}" method="post" th:object="${EmailFormDto}" id="emailFormDto" class="contacts__form">
                                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 								<div class="contacts__form-grid">
 									<div class="form__field" th:classappend="${#fields.hasErrors('name') ? 'has-error' : ''}">
@@ -113,8 +113,8 @@
 								</div>
 								<div class="contacts__bottom-caption">Email us</div>
 								<p class="contacts__bottom-subtitle">Email us for general queries, including marketing and partnership opportunities.</p>
-								<a th:href="@{mailto:hello@ezyskills.com}" class="contacts__bottom-btn">hello@ezyskills.com</a>
-							</div>
+								<a th:href="@{'mailto:hello@ezyskills.com'}" class="contacts__bottom-btn">hello@ezyskills.com</a>
+                            </div>
 							<div class="contacts__bottom-block">
 								<div class="contacts__bottom-icon">
 									<img th:src="@{/assets/img/operator.png}" alt="icon">
@@ -151,12 +151,12 @@
                             <h3 class="footer__title title-sm"> Quick <span class="color-accent">Links</span>
                             </h3>
                             <ul class="footer__menu-list">
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Home</a></li>
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Our Story</a></li>
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Best Courses</a></li>
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Your FAQ’s</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/about}" class="footer__menu-link">Our Story</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/courses}" class="footer__menu-link">Best Courses</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/faq}" class="footer__menu-link">Your FAQ’s</a></li>
                                 <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Cancellation & Refunds</a></li>
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Contact US</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/contacts}" class="footer__menu-link">Contact US</a></li>
                             </ul>
                         </nav>
                         <div class="footer__contacts">
@@ -210,7 +210,7 @@
 	</div>
     <script th:inline="javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contactFormDto');
+            const form = document.getElementById('emailFormDto');
             const submitBtn = form.querySelector('button[type="submit"]');
 
             submitBtn.innerHTML = '<span class="btn-text">Send</span><span class="spinner-border spinner-border-sm" style="display: none;" aria-hidden="true"></span>';
@@ -273,5 +273,4 @@
         });
     </script>
 </body>
-
 </html>

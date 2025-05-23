@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<title>Ezyskills | about us</title>
@@ -42,10 +43,15 @@
                             <li class="menu__item"><a th:href="@{/contacts}" class="menu__link">Contact US</a></li>
 						</ul>
 					</nav>
-					<div class="header__actions">
+                    <div sec:authorize="!isAuthenticated()" class="header__actions">
                         <a th:href="@{/login}" class="header__action btn btn-primary-outline">Log In</a>
                         <a th:href="@{/register}" class="header__action btn btn-primary">Create Account</a>
-					</div>
+                    </div>
+                    <div sec:authorize="isAuthenticated()" class="header__actions">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="header__action btn btn-primary-outline">logout</button>
+                        </form>
+                    </div>
 				</div>
 			</div>
 		</header>
@@ -60,13 +66,13 @@
 						</div>
 						<div class="about__images">
 							<div class="about__image">
-								<img th:src="@{/assets/img/about/01.jpg}" class="cover-image" class="cover-image" alt="photo">
+								<img th:src="@{/assets/img/about/01.jpg}" class="cover-image" alt="photo">
 							</div>
 							<div class="about__image">
-								<img th:src="@{/assets/img/about/02.png}" class="cover-image" class="cover-image" alt="photo">
+								<img th:src="@{/assets/img/about/02.png}" class="cover-image" alt="photo">
 							</div>
 							<div class="about__image">
-								<img th:src="@{/assets/img/about/03.jpg}" class="cover-image" class="cover-image" alt="photo">
+								<img th:src="@{/assets/img/about/03.jpg}" class="cover-image" alt="photo">
 							</div>
 						</div>
 					</div>
@@ -218,11 +224,11 @@
 							</h3>
 							<ul class="footer__menu-list">
                                 <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
-                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Our Story</a></li>
-                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Best Courses</a></li>
-                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Your FAQ’s</a></li>
-                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Cancellation & Refunds</a></li>
-                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Contact US</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/about}" class="footer__menu-link">Our Story</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/courses}" class="footer__menu-link">Best Courses</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/faq}" class="footer__menu-link">Your FAQ’s</a></li>
+                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Cancellation & Refunds</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/contacts}" class="footer__menu-link">Contact US</a></li>
 							</ul>
 						</nav>
 						<div class="footer__contacts">
@@ -242,7 +248,7 @@
                                         <img th:src="@{/assets/img/icons/envelope-white.svg}" alt="icon">
 									</div>
 									<div class="footer__contacts-body">
-                                        <a th:href="@{mailto:info@ezyskills.in}">info@ezyskills.in</a>
+                                        <a th:href="@{'mailto:info@ezyskills.in'}">info@ezyskills.in</a>
 									</div>
 								</li>
 								<li class="footer__contacts-item">
@@ -260,8 +266,8 @@
 				</div>
 				<div class="footer__bottom">
 					<div class="footer__links">
-                        <a th:href="@{/}" class="footer__link">Terms & Conditions</a>
-                        <a th:href="@{/}" class="footer__link">Privacy Policy</a>
+                        <a th:href="@{#}" class="footer__link">Terms & Conditions</a>
+                        <a th:href="@{#}" class="footer__link">Privacy Policy</a>
 					</div>
 					<div class="footer__socials">
                         <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>

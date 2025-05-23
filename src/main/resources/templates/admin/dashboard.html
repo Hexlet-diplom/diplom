@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}" />
+</head>
+<body>
+<div id="loader" class="loader-wrapper">
+    <div class="loader"></div>
+</div>
+
+<div th:replace="~{admin/fragments/sidebar :: sidebar}"></div>
+
+<div class="content">
+    <h1>Welcome to the Admin Dashboard</h1>
+
+    <div class="stats">
+        <div class="stat-box">
+            <i class="fas fa-users"></i>
+            <h3 th:text="${totalUsers}">150</h3>
+            <p>Total Users</p>
+        </div>
+        <div class="stat-box">
+            <i class="fas fa-book"></i>
+            <h3 th:text="${totalCourses}">30</h3>
+            <p>Total Courses</p>
+        </div>
+        <div class="stat-box">
+            <i class="fas fa-cogs"></i>
+            <h3 th:text="${activeRequests}">5</h3>
+            <p>Active Requests</p>
+        </div>
+    </div>
+
+    <div class="logout">
+        <a href="/"><i class="fas fa-sign-out-alt"></i> Exit</a>
+    </div>
+</div>
+
+<script>
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
+    }
+
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        loader.classList.add('hidden');
+        setTimeout(() => loader.remove(), 500);
+    });
+</script>
+
+</body>
+</html>

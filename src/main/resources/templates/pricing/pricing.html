@@ -18,7 +18,7 @@
     <link rel="manifest" th:src="@{/assets/site.webmanifest}" />
     <!-- favicon -->
     <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
-    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
 </head>
 
 <body>
@@ -45,7 +45,6 @@
                     <div sec:authorize="!isAuthenticated()" class="header__actions">
                         <a th:href="@{/login}" class="header__action btn btn-primary-outline">Log In</a>
                         <a th:href="@{/register}" class="header__action btn btn-primary">Create Account</a>
-
                     </div>
                     <div sec:authorize="isAuthenticated()" class="header__actions">
                         <form th:action="@{/logout}" method="post">
@@ -174,12 +173,12 @@
                             <h3 class="footer__title title-sm"> Quick <span class="color-accent">Links</span>
                             </h3>
                             <ul class="footer__menu-list">
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Home</a></li>
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Our Story</a></li>
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Best Courses</a></li>
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Your FAQ’s</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/about}" class="footer__menu-link">Our Story</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/courses}" class="footer__menu-link">Best Courses</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/faq}" class="footer__menu-link">Your FAQ’s</a></li>
                                 <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Cancellation & Refunds</a></li>
-                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Contact US</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/contacts}" class="footer__menu-link">Contact US</a></li>
                             </ul>
                         </nav>
                         <div class="footer__contacts">
