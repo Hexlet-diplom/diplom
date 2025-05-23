@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error 400</title>
+</head>
+<body>
+<h1>Bad Request</h1>
+<p th:text="${errorMessage}">Error message</p>
+<a th:href="@{/courses}">Back to courses</a>
+</body>
+</html>

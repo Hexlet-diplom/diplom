@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|${category.id == null ? 'Create' : 'Edit'} Category|">Category Form</title>
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}">
+</head>
+<body>
+<div th:replace="~{admin/fragments/sidebar :: sidebar}"></div>
+<div class="content">
+    <h1 th:text="|${category.id == null ? 'Create' : 'Edit'} Category|"></h1>
+    <form th:action="@{${formAction}}" method="post" th:object="${category}">
+        <div style="margin-bottom: 15px;">
+            <label for="name">Name:</label><br/>
+            <input type="text" id="name" name="name" th:field="*{name}" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: var(--danger);"></div>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="description">Description:</label><br/>
+            <textarea id="description" name="description" th:field="*{description}" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: var(--danger);"></div>
+        </div>
+
+        <button type="submit" style="background: #4a5568; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer;">
+            Submit
+        </button>
+    </form>
+</div>
+
+<script>
+    function toggleTheme() {
+        document.body.classList.toggle('dark');
+    }
+</script>
+</body>
+</html>
+

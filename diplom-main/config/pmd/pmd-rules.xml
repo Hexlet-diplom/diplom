@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Rules" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 ">
+    <description>
+        Custom rules to use on the project
+        The source of rule sets
+        https://github.com/pmd/pmd/tree/master/pmd-java/src/main/resources/category/java
+    </description>
+
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="CommentDefaultAccessModifier"/>
+        <exclude name="UseExplicitTypes"/>
+        <exclude name="ClassNamingConventions"/>
+        <exclude name="OnlyOneReturn"/>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/ClassNamingConventions">
+        <properties>
+            <property name="classPattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="abstractClassPattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="interfacePattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="enumPattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="annotationPattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="testClassPattern" value="^Test.*$|^[A-Z][a-zA-Z0-9]*Test(s|Case)?$|^[A-Z][a-zA-Z0-9]*IT$"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/design.xml">
+        <exclude name="LoosePackageCoupling"/>
+        <exclude name="LawOfDemeter"/>
+    </rule>
+
+    <rule ref="category/java/documentation.xml/CommentSize">
+        <properties>
+            <property name="maxLines" value="8" />
+            <property name="maxLineLength" value="100" />
+        </properties>
+    </rule>
+
+    <rule ref="category/java/documentation.xml"/>
+    <rule ref="category/java/errorprone.xml"/>
+    <rule ref="category/java/multithreading.xml"/>
+    <rule ref="category/java/performance.xml"/>
+    <rule ref="category/java/security.xml"/>
+
+    <!-- Uncomment this if do want to exclude tests classes from analysis -->
+    <!-- <exclude-pattern>.*/src/test/.*</exclude-pattern> -->
+
+</ruleset>

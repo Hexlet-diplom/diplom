@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<title>Ezyskills | about us</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" itemprop="description" content="">
+	<meta name="keywords" itemprop="keywords" content="">
+	<!-- favicon -->
+    <link rel="icon" type="image/png" th:href="@{/assets/icon/favicon-96x96.png}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" th:href="@{/assets/icon/favicon.svg}" />
+    <link rel="shortcut icon" th:href="@{/assets/icon/favicon.ico}" />
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/assets/icon/apple-touch-icon.png}" />
+    <meta name="apple-mobile-web-app-title" content="EzySkills" />
+    <link rel="manifest" th:src="@{/assets/site.webmanifest}" />
+	<!-- favicon -->
+    <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header header_white">
+			<div class="container">
+				<div class="header__body">
+                    <a th:href="@{/}" class="header__logo">
+						<picture>
+                            <source media="(min-width: 575.98px)" th:srcset="@{/assets/img/logo.png}">
+                            <img th:src="@{/assets/img/logo-mobile.png}" alt="Logotype">
+						</picture>
+					</a>
+					<nav aria-label="main menu" class="header__menu menu">
+						<ul class="menu__list">
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">Home</a></li>
+                            <li class="menu__item"><a th:href="@{/course-selector}" class="menu__link">Course Selector</a></li>
+                            <li class="menu__item"><a th:href="@{/courses}" class="menu__link">Courses</a></li>
+                            <li class="menu__item"><a th:href="@{/pricing}" class="menu__link">Pricing</a></li>
+                            <li class="menu__item"><a th:href="@{/faq}" class="menu__link">FAQ</a></li>
+                            <li class="menu__item"><a th:href="@{/contacts}" class="menu__link">Contact US</a></li>
+						</ul>
+					</nav>
+                    <div sec:authorize="!isAuthenticated()" class="header__actions">
+                        <a th:href="@{/login}" class="header__action btn btn-primary-outline">Log In</a>
+                        <a th:href="@{/register}" class="header__action btn btn-primary">Create Account</a>
+                    </div>
+                    <div sec:authorize="isAuthenticated()" class="header__actions">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="header__action btn btn-primary-outline">logout</button>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="about">
+				<div class="container">
+					<div class="about__body">
+						<div class="about__offer">
+							<div class="about__caption">ABOUT US</div>
+							<h1 class="about__title title-xl">The Platform For The Next Billion Learners</h1>
+							<p class="about__subtitle">Transforming tech education for the next&nbsp;generation of students & employees</p>
+						</div>
+						<div class="about__images">
+							<div class="about__image">
+								<img th:src="@{/assets/img/about/01.jpg}" class="cover-image" alt="photo">
+							</div>
+							<div class="about__image">
+								<img th:src="@{/assets/img/about/02.png}" class="cover-image" alt="photo">
+							</div>
+							<div class="about__image">
+								<img th:src="@{/assets/img/about/03.jpg}" class="cover-image" alt="photo">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="story">
+				<div class="container">
+					<div class="story__body">
+						<div class="story__image">
+							<img th:src="@{/assets/img/story.jpg}" class="cover-image" alt="picture">
+						</div>
+						<div class="story__content">
+							<div class="story__caption">OUR STORY</div>
+							<h2 class="story__title title-xl color-accent">Innovating new ways to train students</h2>
+							<div class="story__desc">
+								<p>We see no limits to what we can achieve by harnessing our individual and collective strengths. We are changing the world with our ideas, insights, and unique perspectives.</p>
+								<p>Our innovation is led by data, curiosity and the occasional happy accident. We create an uplifting environment where we learn from our failures and celebrate our success.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="benefits">
+				<div class="container">
+					<div class="benefits__body">
+						<div class="benefits__block">
+							<div class="benefits__block-icon">
+								<img th:src="@{/assets/img/icons/benefit-1.svg}" alt="ico">
+							</div>
+							<h3 class="benefits__block-title title-xl">Our <span class="color-accent">Mission</span></h3>
+							<p class="benefits__block-desc">Provide practice based skill trainings using an unique teaching methodologies & skill platform to enhance right skills required in an industry for working professionals, Non-Tech professionals, College students & Start-ups through new skilling, up skilling & re-skilling.</p>
+						</div>
+						<div class="benefits__block">
+							<div class="benefits__block-icon">
+								<img th:src="@{/assets/img/icons/benefit-2.svg}" alt="ico">
+							</div>
+							<h3 class="benefits__block-title title-xl">Our <span class="color-accent">Vision</span></h3>
+							<p class="benefits__block-desc">To transform into a right employee by imparting industry suited IT skills in a corporate office working environment with Holistic approach.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<section class="media">
+				<div class="container">
+					<h2 class="media__title title-xl">Our <span class="color-accent">Team</span></h2>
+					<div class="media__slider">
+						<button type="button" class="media__slider-btn media__prev">
+							<img th:src="@{/assets/img/icons/chevron-left.svg}" alt="icon">
+						</button>
+						<div class="media__slides">
+							<div class="media__slide">
+								<div class="media__slide-image">
+									<img th:src="@{/assets/img/team/ceo.png}" class="cover-image" alt="photo">
+								</div>
+								<div class="media__slide-content">
+									<h3 class="media__slide-title">KISHORE KUMAR</h3>
+									<p class="media__slide-desc">CEO & FOUNDER, CARAMEL IT SERVICES</p>
+								</div>
+							</div>
+							<div class="media__slide">
+								<div class="media__slide-image">
+									<img th:src="@{/assets/img/team/director.png}" class="cover-image" alt="photo">
+								</div>
+								<div class="media__slide-content">
+									<h3 class="media__slide-title">SUCHITRA</h3>
+									<p class="media__slide-desc">DIRECTOR - HR & OPERATIONS</p>
+								</div>
+							</div>
+							<div class="media__slide">
+								<div class="media__slide-image">
+									<img th:src="@{/assets/img/team/co-founder.png}" class="cover-image" alt="photo">
+								</div>
+								<div class="media__slide-content">
+									<h3 class="media__slide-title">NAREN M</h3>
+									<p class="media__slide-desc">Co-Founder</p>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="media__slider-btn media__next">
+							<img th:src="@{/assets/img/icons/chevron-right.svg}" alt="icon">
+						</button>
+					</div>
+				</div>
+			</section>
+			<section class="media">
+				<div class="container">
+					<h2 class="media__title title-xl">Our <span class="color-accent">Advisors</span></h2>
+					<div class="media__slider">
+						<button type="button" class="media__slider-btn media__prev">
+							<img th:src="@{/assets/img/icons/chevron-left.svg}" alt="icon">
+						</button>
+						<div class="media__slides">
+							<div class="media__slide">
+								<div class="media__slide-image">
+									<img th:src="@{/assets/img/advisors/industrialist.jpg}" class="cover-image" alt="photo">
+								</div>
+								<div class="media__slide-content">
+									<h3 class="media__slide-title">PRASAD</h3>
+									<p class="media__slide-desc">PHARMA INDUSTRIALIST</p>
+								</div>
+							</div>
+							<div class="media__slide">
+								<div class="media__slide-image">
+									<img th:src="@{/assets/img/advisors/inverstor.jpg}" class="cover-image" alt="photo">
+								</div>
+								<div class="media__slide-content">
+									<h3 class="media__slide-title">ANAND KUMAR</h3>
+									<p class="media__slide-desc">ANGEL INVESTOR</p>
+								</div>
+							</div>
+							<div class="media__slide">
+								<div class="media__slide-image">
+									<img th:src="@{/assets/img/advisors/advisor.jpg}" class="cover-image" alt="photo">
+								</div>
+								<div class="media__slide-content">
+									<h3 class="media__slide-title">CHITRA</h3>
+									<p class="media__slide-desc">SR.EXECUTIVE ADVISOR</p>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="media__slider-btn media__next">
+							<img th:src="@{/assets/img/icons/chevron-right.svg}" alt="icon">
+						</button>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="container">
+				<div class="footer__body">
+					<div class="footer__main">
+						<a th:href="@{/}" class="footer__logo">
+							<img th:src="@{/assets/img/logo-white.svg}" alt="logotype">
+						</a>
+						<p class="footer__note">Let Us build your career together Be the first person to transform yourself with our unique & world class corporate level trainings.</p>
+						<form action="#" class="footer__form form">
+							<h3 class="form__caption">Subscribe Our Newsletter</h3>
+							<div class="form__row">
+								<input type="email" name="email" class="form__control" placeholder="Your Email address">
+								<button type="submit" class="form__submit">
+									<img th:src="@{/assets/img/icons/arrow-right-white.svg}" alt="icon">
+								</button>
+							</div>
+						</form>
+					</div>
+					<div class="footer__side">
+						<nav class="footer__menu" aria-label="menu in footer">
+							<h3 class="footer__title title-sm"> Quick <span class="color-accent">Links</span>
+							</h3>
+							<ul class="footer__menu-list">
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/about}" class="footer__menu-link">Our Story</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/courses}" class="footer__menu-link">Best Courses</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/faq}" class="footer__menu-link">Your FAQ’s</a></li>
+                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Cancellation & Refunds</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/contacts}" class="footer__menu-link">Contact US</a></li>
+							</ul>
+						</nav>
+						<div class="footer__contacts">
+							<h3 class="footer__title title-sm"> Contact <span class="accent-color">Us</span>
+							</h3>
+							<ul class="footer__contacts-list">
+								<li class="footer__contacts-item">
+									<div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/location-white.svg}" alt="icon">
+									</div>
+									<div class="footer__contacts-body">
+										<address>Navakethan Complex, 6th Floor, 605, 606 A&P opp, CLock Tower, SD Road, Secunderabad, Telangana 500003</address>
+									</div>
+								</li>
+								<li class="footer__contacts-item">
+									<div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/envelope-white.svg}" alt="icon">
+									</div>
+									<div class="footer__contacts-body">
+                                        <a th:href="@{'mailto:info@ezyskills.in'}">info@ezyskills.in</a>
+									</div>
+								</li>
+								<li class="footer__contacts-item">
+									<div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/phone-white.svg}" alt="icon">
+									</div>
+									<div class="footer__contacts-body">
+                                        <a th:href="@{tel:+918428448903}">+91 8428448903</a>
+                                        <a th:href="@{tel:+919475484959}">+91 9475484959</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="footer__bottom">
+					<div class="footer__links">
+                        <a th:href="@{#}" class="footer__link">Terms & Conditions</a>
+                        <a th:href="@{#}" class="footer__link">Privacy Policy</a>
+					</div>
+					<div class="footer__socials">
+                        <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>
+                        <a th:href="@{https://twitter.com}" class="footer__social"><img th:src="@{/assets/img/icons/twitter.svg}" alt="Twitter"></a>
+                        <a th:href="@{https://instagram.com}" class="footer__social"><img th:src="@{/assets/img/icons/instagram.svg}" alt="Instagram"></a>
+                        <a th:href="@{https://linkedin.com}" class="footer__social"><img th:src="@{/assets/img/icons/linkedin.svg}" alt="LinkedIn"></a>
+                        <a th:href="@{https://youtube.com}" class="footer__social"><img th:src="@{/assets/img/icons/youtube.svg}" alt="YouTube"></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>

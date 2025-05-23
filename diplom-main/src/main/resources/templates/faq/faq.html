@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<title>Ezyskills | Frequently Asked Questions</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" itemprop="description" content="">
+	<meta name="keywords" itemprop="keywords" content="">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" th:href="@{/assets/icon/favicon-96x96.png}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" th:href="@{/assets/icon/favicon.svg}" />
+    <link rel="shortcut icon" th:href="@{/assets/icon/favicon.ico}" />
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/assets/icon/apple-touch-icon.png}" />
+    <meta name="apple-mobile-web-app-title" content="EzySkills" />
+    <link rel="manifest" th:src="@{/assets/site.webmanifest}" />
+    <!-- favicon -->
+    <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header header_white">
+			<div class="container">
+				<div class="header__body">
+                    <a th:href="@{/}" class="header__logo">
+                        <picture>
+                            <source media="(min-width: 575.98px)" th:srcset="@{/assets/img/logo.png}">
+                            <img th:src="@{/assets/img/logo-mobile.png}" alt="Logotype">
+                        </picture>
+                    </a>
+                    <nav aria-label="main menu" class="header__menu menu">
+                        <ul class="menu__list">
+                            <li class="menu__item"><a th:href="@{/}" class="menu__link">Home</a></li>
+                            <li class="menu__item"><a th:href="@{/course-selector}" class="menu__link">Course Selector</a></li>
+                            <li class="menu__item"><a th:href="@{/courses}" class="menu__link">Courses</a></li>
+                            <li class="menu__item"><a th:href="@{/pricing}" class="menu__link">Pricing</a></li>
+                            <li class="menu__item"><a th:href="@{/faq}" class="menu__link">FAQ</a></li>
+                            <li class="menu__item"><a th:href="@{/contacts}" class="menu__link">Contact US</a></li>
+                        </ul>
+                    </nav>
+                    <div sec:authorize="!isAuthenticated()" class="header__actions">
+                        <a th:href="@{/login}" class="header__action btn btn-white-outline">Log In</a>
+                        <a th:href="@{/register}" class="header__action btn btn-white">Create Account</a>
+                    </div>
+                    <div sec:authorize="isAuthenticated()" class="header__actions">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="header__action btn btn-white-outline">logout</button>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="faq">
+				<div class="faq__header">
+					<h1 class="faq__title title-md">Frequently Asked Questions</h1>
+				</div>
+				<div class="faq__body">
+					<div class="container">
+						<div class="faq__wrapper">
+							<ul class="faq__list">
+								<li class="faq__item">
+									<h3 class="faq__question active">Who is eligible for this program?</h3>
+									<p class="faq__answer active">Any Degree/Btech/BE/MTech final year, Passed outs, Individuals, Employees are eligible for this program.</p>
+								</li>
+								<li class="faq__item">
+									<h3 class="faq__question">What is the duration of the program?</h3>
+									<p class="faq__answer">The duration of the program varies depending on the course. Typically, it ranges from 3 to 6 months.</p>
+								</li>
+								<li class="faq__item">
+									<h3 class="faq__question">Do I get the assured placement?</h3>
+									<p class="faq__answer">While we provide placement assistance and support, securing a job depends on your skills, performance, and interview results.</p>
+								</li>
+								<li class="faq__item">
+									<h3 class="faq__question">What is the basic academic percentage required to enroll for the course?</h3>
+									<p class="faq__answer">A minimum of 50% academic percentage is recommended, but we encourage all motivated learners to apply.</p>
+								</li>
+								<li class="faq__item">
+									<h3 class="faq__question">What is the execution plan of the program?</h3>
+									<p class="faq__answer">The program consists of online and offline sessions, hands-on projects, mentorship, and assessments to ensure practical learning.</p>
+								</li>
+								<li class="faq__item">
+									<h3 class="faq__question">Can we take this course online?</h3>
+									<p class="faq__answer">Yes, the course is available online, allowing you to learn from anywhere at your own pace.</p>
+								</li>
+								<li class="faq__item">
+									<h3 class="faq__question">I am already employed, will I be eligible for the program?</h3>
+									<p class="faq__answer">Yes, working professionals can enroll and learn at their convenience.</p>
+								</li>
+								<li class="faq__item">
+									<h3 class="faq__question">What if I miss the session due to an emergency?</h3>
+									<p class="faq__answer">You will have access to recorded sessions and additional learning materials to catch up on missed classes.</p>
+								</li>
+								<li class="faq__item">
+									<h3 class="faq__question">Do you provide any certificate after the program?</h3>
+									<p class="faq__answer">Yes, upon successful completion of the program, you will receive a certification.</p>
+								</li>
+								<li class="faq__item">
+									<h3 class="faq__question">Have suggestions for us?</h3>
+									<p class="faq__answer">We welcome your feedback! Feel free to share your suggestions with our support team.</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__body">
+                    <div class="footer__main">
+                        <a th:href="@{/}" class="footer__logo">
+                            <img th:src="@{/assets/img/logo-white.svg}" alt="logotype">
+                        </a>
+                        <p class="footer__note">Let Us build your career together Be the first person to transform yourself with our unique & world class corporate level trainings.</p>
+                        <form action="#" class="footer__form form">
+                            <h3 class="form__caption">Subscribe Our Newsletter</h3>
+                            <div class="form__row">
+                                <input type="email" name="email" class="form__control" placeholder="Your Email address">
+                                <button type="submit" class="form__submit">
+                                    <img th:src="@{/assets/img/icons/arrow-right-white.svg}" alt="icon">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer__side">
+                        <nav class="footer__menu" aria-label="menu in footer">
+                            <h3 class="footer__title title-sm"> Quick <span class="color-accent">Links</span>
+                            </h3>
+                            <ul class="footer__menu-list">
+                                <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/about}" class="footer__menu-link">Our Story</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/courses}" class="footer__menu-link">Best Courses</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/faq}" class="footer__menu-link">Your FAQ’s</a></li>
+                                <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Cancellation & Refunds</a></li>
+                                <li class="footer__menu-item"><a th:href="@{/contacts}" class="footer__menu-link">Contact US</a></li>
+                            </ul>
+                        </nav>
+                        <div class="footer__contacts">
+                            <h3 class="footer__title title-sm"> Contact <span class="accent-color">Us</span>
+                            </h3>
+                            <ul class="footer__contacts-list">
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/location-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <address>Navakethan Complex, 6th Floor, 605, 606 A&P opp, CLock Tower, SD Road, Secunderabad, Telangana 500003</address>
+                                    </div>
+                                </li>
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/envelope-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <a th:href="@{'mailto:info@ezyskills.in'}">info@ezyskills.in</a>
+                                    </div>
+                                </li>
+                                <li class="footer__contacts-item">
+                                    <div class="footer__contacts-icon">
+                                        <img th:src="@{/assets/img/icons/phone-white.svg}" alt="icon">
+                                    </div>
+                                    <div class="footer__contacts-body">
+                                        <div><a th:href="@{tel:+918428448903}">+91 8428448903</a></div>
+                                        <div><a th:href="@{tel:+919475484959}">+91 9475484959</a></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <div class="footer__links">
+                        <a th:href="@{#}" class="footer__link">Terms & Conditions</a>
+                        <a th:href="@{#}" class="footer__link">Privacy Policy</a>
+                    </div>
+                    <div class="footer__socials">
+                        <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>
+                        <a th:href="@{https://twitter.com}" class="footer__social"><img th:src="@{/assets/img/icons/twitter.svg}" alt="Twitter"></a>
+                        <a th:href="@{https://instagram.com}" class="footer__social"><img th:src="@{/assets/img/icons/instagram.svg}" alt="Instagram"></a>
+                        <a th:href="@{https://linkedin.com}" class="footer__social"><img th:src="@{/assets/img/icons/linkedin.svg}" alt="LinkedIn"></a>
+                        <a th:href="@{https://youtube.com}" class="footer__social"><img th:src="@{/assets/img/icons/youtube.svg}" alt="YouTube"></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+	</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq__question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    document.querySelectorAll('.faq__answer').forEach(answer => {
+                        answer.classList.remove('active');
+                    });
+
+                    document.querySelectorAll('.faq__question').forEach(q => {
+                        q.classList.remove('active');
+                    });
+
+                    const answer = question.nextElementSibling;
+                    answer.classList.add('active');
+                    question.classList.add('active');
+                });
+            });
+
+            if (faqQuestions.length > 0) {
+                faqQuestions[0].classList.add('active');
+                faqQuestions[0].nextElementSibling.classList.add('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ezyskills
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 123
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+  thymeleaf:
+    cache: false
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+  mail:
+    host: smtp.yandex.ru
+    port: 465
+    username: ezyskills@yandex.ru
+    password: "ikjqtdwsflxebsgs"
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+          starttls:
+            enable: false
+          connectiontimeout: 10000
+          timeout: 10000
+          writetimeout: 10000
+        debug: true
+
+logging:
+  level:
+    org.springframework: INFO
+    org.springframework.security: DEBUG
+    org.flywaydb: DEBUG
+
+support:
+  email: ezyskills@yandex.ru
