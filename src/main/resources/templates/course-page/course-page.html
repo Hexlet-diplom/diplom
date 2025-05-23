@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:white-space="http://www.w3.org/1999/xhtml">
 
 <head>
 	<title th:text="${course.name + ' | EzySkills'}">Ezyskills | Courses Details</title>
@@ -19,41 +19,8 @@
     <link rel="manifest" th:src="@{/assets/site.webmanifest}" />
 	<!-- favicon -->
     <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
-    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
-    <style>
-      .accordion-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .course-page__step-toggle {
-        background: none;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-      }
-
-      .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        padding: 0;
-      }
-
-      .accordion-item.active .accordion-content {
-        max-height: 50px;
-        padding: 10px 0;
-      }
-
-      .accordion-arrow {
-        transition: transform 0.3s ease;
-      }
-
-      .accordion-item.active .accordion-arrow {
-        transform: rotate(180deg);
-      }
-    </style>
+    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/accordion-course-page.css}" />
 </head>
 
 <body>
@@ -111,7 +78,7 @@
 							<div class="course-page__column">
 								<div class="course-page__block">
 									<h2 class="course-page__caption color-accent">About The Course</h2>
-                                    <p class="course-page__desc" th:text="${course.description}"></p>
+                                    <p class="course-page__desc" th:text="${course.description}" style="white-space: pre-line"></p>
 								</div>
 								<div class="course-page__block">
 									<h2 class="course-page__caption color-accent">Objectives</h2>
@@ -356,22 +323,6 @@
             </div>
         </footer>
 	</div>
-    <script>
-        document.querySelectorAll('.course-page__step-toggle').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const accordionItem = button.closest('.accordion-item');
-                const isActive = accordionItem.classList.contains('active');
-
-                document.querySelectorAll('.accordion-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-
-                if (!isActive) {
-                    accordionItem.classList.add('active');
-                }
-            });
-        });
-    </script>
+    <script th:src="@{/assets/js/accordion-toggle-course-page.js}"></script>
 </body>
 </html>

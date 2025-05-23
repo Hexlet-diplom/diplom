@@ -121,4 +121,8 @@ public class UserService {
     public User findByEmail(final String email) {
         return userRepository.findByEmail(email).orElse(null);
     }
+
+    public long countUsers() {
+        return userRepository.count();
+    }
 }
