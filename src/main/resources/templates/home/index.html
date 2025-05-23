@@ -18,8 +18,8 @@
     <meta name="apple-mobile-web-app-title" content="EzySkills" />
     <link rel="manifest" th:src="@{/assets/site.webmanifest}" />
     <!-- styles -->
-    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
-    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/reset.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style.min.css}" />
     <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.css}">
 </head>
 
@@ -49,6 +49,9 @@
                         <a th:href="@{/register}" class="header__action btn btn-primary">Create Account</a>
                     </div>
                     <div sec:authorize="isAuthenticated()" class="header__actions">
+                        <div sec:authorize="hasRole('ADMIN')" class="header__action">
+                            <a th:href="@{/admin/dashboard/main}" class="btn btn-warning">Admin Dashboard</a>
+                        </div>
                         <form th:action="@{/logout}" method="post">
                             <button type="submit" class="header__action btn btn-primary-outline">logout</button>
                         </form>
@@ -679,57 +682,7 @@
 		</footer>
 	</div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.swiper', {
-            direction: "horizontal",
-            loop: true,
-
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-
-            effect: 'creative',
-            creativeEffect: {
-                prev: {
-                    translate: [-120, 0, -200],
-                    opacity: 0.5
-                },
-                next: {
-                    translate: [120, 0, -200],
-                    opacity: 0.5
-                }
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.querySelector('.train-container');
-            const track = document.querySelector('.train-track');
-
-            const cards = container.innerHTML;
-            container.insertAdjacentHTML('beforeend', cards);
-
-            function setupWidth() {
-                const containerWidth = container.scrollWidth / 2;
-                container.style.width = `${containerWidth}px`;
-                track.style.width = `${containerWidth * 2}px`;
-            }
-
-            setupWidth();
-            window.addEventListener('resize', setupWidth);
-
-            function setSpeed(speed) { // speed - секунд на полный цикл
-                container.style.animationDuration = `${speed}s`;
-            }
-
-            setSpeed(60);
-        });
-    </script>
+    <script th:src="@{/assets/js/swiper-main.js}"></script>
+    <script th:src="@{/assets/js/train-main.js}"></script>
 </body>
 </html>

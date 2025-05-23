@@ -1,0 +1,32 @@
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-page__step-toggle {
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 50px;
+  padding: 10px 0;
+}
+
+.accordion-arrow {
+  transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-arrow {
+  transform: rotate(180deg);
+}

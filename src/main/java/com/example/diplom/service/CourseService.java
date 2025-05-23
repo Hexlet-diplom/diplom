@@ -189,4 +189,7 @@ public class CourseService {
         courseRepository.delete(course);
     }
 
+    public long countCourses() {
+        return courseRepository.count();
+    }
 }
