@@ -1,43 +1,32 @@
 spring:
   application:
     name: diplom
+    courses:
+      page-size: 9
+      sort-default: newest
+
+  data:
+    web:
+      pageable:
+        default-page-size: 9
+        max-page-size: 50
 
   main:
     banner-mode: off
     allow-bean-definition-overriding: true
 
   profiles:
-    active: dev
-
-  datasource:
-    url: jdbc:postgresql://localhost:5432/ezyskills
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:123}
-    driver-class-name: org.postgresql.Driver
+    active: prod
 
   jpa:
-    generate-ddl: true
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
-  mail:
-    host: smtp.yandex.com
-    port: 465
-    username: ezyskills@yandex.ru
-    password: "icxbssfrpmxudwcd"
-    protocol: smtp
     properties:
-      mail:
-        smtp:
-          auth: true
-          ssl:
-            enable: true
-          starttls:
-            enable: false
-          connectiontimeout: 10000
-          timeout: 10000
-          writetimeout: 10000
+      hibernate:
+        format_sql: true
+
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
 
   thymeleaf:
     prefix: classpath:/templates/
@@ -46,7 +35,7 @@ spring:
 
   flyway:
     enabled: true
-    baseline-on-migrate: true
+    locations: classpath:db/migration
 
 logging:
   level:
@@ -55,6 +44,7 @@ logging:
     org.springframework.security.web.authentication: DEBUG
     org.springframework.web: DEBUG
     org.springframework.boot.autoconfigure: DEBUG
+    org.flywaydb: DEBUG
 
 support:
   email: ezyskills@yandex.ru

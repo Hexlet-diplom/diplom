@@ -18,7 +18,7 @@
 
     <label for="role">Role</label>
     <select id="role" name="role" required>
-        <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+        <option th:each="role : ${Roles}" th:value="${role.id}" th:text="${role.name}"></option>
     </select>
 
     <button type="submit">Save</button>

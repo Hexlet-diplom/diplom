@@ -83,7 +83,7 @@
         <div class="container">
             <div class="footer__body">
                 <div class="footer__main">
-                    <a th:href="@{/'/'}" class="footer__logo">
+                    <a th:href="@{/}" class="footer__logo">
                         <img th:src="@{/assets/img/logo-white.svg}" alt="logotype">
                     </a>
                     <p class="footer__note">
@@ -103,12 +103,12 @@
                     <nav class="footer__menu" aria-label="menu in footer">
                         <h3 class="footer__title title-sm">Quick <span class="color-accent">Links</span></h3>
                         <ul class="footer__menu-list">
-                            <li><a th:href="@{/}" class="footer__menu-link">Home</a></li>
-                            <li><a th:href="@{#}" class="footer__menu-link">Our Story</a></li>
-                            <li><a th:href="@{#}" class="footer__menu-link">Best Courses</a></li>
-                            <li><a th:href="@{#}" class="footer__menu-link">Your FAQ’s</a></li>
-                            <li><a th:href="@{#}" class="footer__menu-link">Cancellation & Refunds</a></li>
-                            <li><a th:href="@{#}" class="footer__menu-link">Contact US</a></li>
+                            <li class="footer__menu-item"><a th:href="@{/}" class="footer__menu-link">Home</a></li>
+                            <li class="footer__menu-item"><a th:href="@{/about}" class="footer__menu-link">Our Story</a></li>
+                            <li class="footer__menu-item"><a th:href="@{/courses}" class="footer__menu-link">Best Courses</a></li>
+                            <li class="footer__menu-item"><a th:href="@{/faq}" class="footer__menu-link">Your FAQ’s</a></li>
+                            <li class="footer__menu-item"><a th:href="@{#}" class="footer__menu-link">Cancellation & Refunds</a></li>
+                            <li class="footer__menu-item"><a th:href="@{/contacts}" class="footer__menu-link">Contact US</a></li>
                         </ul>
                     </nav>
                     <div class="footer__contacts">
@@ -146,7 +146,7 @@
             <div class="footer__bottom">
                 <div class="footer__links">
                     <a th:href="@{#}" class="footer__link">Terms & Conditions</a>
-                    <a th:hre class="footer__link">Privacy Policy</a>
+                    <a th:href="@{#}" class="footer__link">Privacy Policy</a>
                 </div>
                 <div class="footer__socials">
                     <a th:href="@{https://facebook.com}" class="footer__social"><img th:src="@{/assets/img/icons/facebook.svg}" alt="Facebook"></a>

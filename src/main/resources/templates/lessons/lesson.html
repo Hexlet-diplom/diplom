@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${lesson.name}"></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary-text: #000;
+        --background: #ffffff;
+        --code-bg: #f3f3f3;
+        --accent: #4e83f2;
+        --button-bg: #fb884d;
+        --button-hover: #fb8031;
+        --gray-border: #d0d0d0;
+        --decor-color: rgba(0, 0, 0, 0.05);
+      }
+
+      body {
+        background: linear-gradient(145deg, #ffffff 0%, #f9f9f9 100%);
+        color: var(--primary-text);
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.8;
+        font-size: 1.15rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      .lesson-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .lesson-title {
+        font-size: 3.2rem;
+        font-weight: 700;
+        margin: 0 0 2rem;
+        letter-spacing: -0.02em;
+      }
+
+      .title-line {
+        width: 400px;
+        height: 4px;
+        background: var(--accent);
+        margin-bottom: 2rem;
+      }
+
+      .nav-buttons {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        display: flex;
+        gap: 15px;
+        z-index: 1000;
+      }
+
+      .nav-button {
+        font-size: 1rem;
+        background: var(--button-bg);
+        color: var(--primary-text);
+        padding: 14px 28px;
+        border-radius: 12px;
+        border: 1px solid var(--gray-border);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+      }
+
+      .nav-button:hover {
+        background: var(--button-hover);
+        transform: translateY(-2px);
+      }
+
+      .content-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 2rem 0;
+        border: 1px solid var(--gray-border);
+      }
+
+      .content-card p {
+        margin-bottom: 1rem;
+      }
+
+      .code-example pre {
+        background: #3a3a3a;
+        padding: 1.5rem;
+        border-radius: 14px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #f8f8f2;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+        border: none;
+      }
+
+      .code-example pre:hover {
+        transform: scale(1.02);
+      }
+
+      .particle {
+        position: fixed;
+        font-size: 1.5rem;
+        color: rgba(0, 0, 0, 0.07);
+        animation: rise 20s linear infinite;
+        pointer-events: none;
+        z-index: 0;
+        user-select: none;
+      }
+
+      @keyframes rise {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-110vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .image-item {
+        margin: 2rem 0;
+        text-align: center;
+      }
+
+      .image-item img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+
+      .image-caption {
+        margin-top: 0.5rem;
+        font-style: italic;
+        font-size: 0.95rem;
+      }
+
+      .decor {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .decor span {
+        position: absolute;
+        font-size: 2rem;
+        color: var(--decor-color);
+        animation: floaty 20s linear infinite;
+      }
+
+      @keyframes floaty {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(-100vh) rotate(360deg); }
+      }
+    </style>
+</head>
+<body>
+
+<div class="floating-dots" style="top: -300px; right: -300px;"></div>
+<div class="floating-dots" style="bottom: -300px; left: -300px;"></div>
+
+<div class="nav-buttons">
+    <a th:href="@{/courses/course-page/{id}(id=${course.id})}" class="nav-button">
+        Home
+    </a>
+    <a th:if="${nextLesson != null}"
+       th:href="@{/lessons/{id}(id=${nextLesson.id})}"
+       class="nav-button">
+        Next Lesson
+    </a>
+</div>
+
+<div class="lesson-container">
+
+    <h1 th:text="${lesson.name}" class="lesson-title"></h1>
+    <div class="title-line"></div>
+
+    <div class="content-card">
+        <div th:if="${lesson.content != null and !lesson.content.isEmpty()}"
+             th:utext="${lessonContentHtml}">
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<script>
+    const particles = () => {
+        const symbols = ['∑', 'π', '≠', '∞', '{}', '</>', '∫', 'Δ', 'λ', '≈', 'α', 'β', '⚙', '★', '✦', '⊕',
+            '○', '●', '▲', '▼', '◆', '■', '◯', '△', '⬤', '⬛'];
+        const count = 100;
+        for (let i = 0; i < count; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100 + 100}vh`;
+            particle.style.fontSize = `${Math.random() * 2 + 0.8}rem`;
+            particle.style.animationDelay = `${Math.random() * 10}s`;
+            particle.style.animationDuration = `${15 + Math.random() * 15}s`;
+            particle.style.opacity = `${Math.random() * 0.3 + 0.05}`;
+            document.body.appendChild(particle);
+        }
+    };
+    particles();
+</script>
+</body>
+</html>

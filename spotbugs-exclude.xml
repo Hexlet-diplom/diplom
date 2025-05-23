@@ -1,0 +1,6 @@
+<FindBugsFilter>
+    <Match>
+        <Class name="com.example.diplom.model.com.example.diplom.model.CategoryTest"/>
+        <Bug pattern="NP_NULL_ON_SOME_PATH"/>
+    </Match>
+</FindBugsFilter>
