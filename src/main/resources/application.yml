@@ -16,7 +16,7 @@ spring:
     allow-bean-definition-overriding: true
 
   profiles:
-    active: dev
+    active: prod
 
   jpa:
     properties:
