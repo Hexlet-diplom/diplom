@@ -5,6 +5,10 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 
+  server:
+    address: 0.0.0.0
+    port: 8080
+
   jpa:
     hibernate:
       ddl-auto: none
