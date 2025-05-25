@@ -20,6 +20,10 @@ public class LessonService {
      */
     private final LessonRepository lessonRepository;
 
+
+    public List<Lesson> getAllLessons() {
+        return lessonRepository.findAll();
+    }
     /**
      * Constructs a LessonService with the given repository.
      *
@@ -116,5 +120,9 @@ public class LessonService {
         Lesson lesson = lessonRepository.findById(lessonId)
                 .orElseThrow(() -> new LessonNotFoundException(lessonId));
         lessonRepository.delete(lesson);
+    }
+
+    public long countLessons() {
+        return lessonRepository.count();
     }
 }

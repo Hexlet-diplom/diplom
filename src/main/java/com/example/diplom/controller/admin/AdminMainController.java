@@ -1,6 +1,7 @@
 package com.example.diplom.controller.admin;
 
 import com.example.diplom.service.CourseService;
+import com.example.diplom.service.LessonService;
 import com.example.diplom.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public final class AdminMainController {
 
     private final UserService userService;
     private final CourseService courseService;
+    private final LessonService lessonService;
+
     /**
      * Handles GET requests to "/admin".
      *
@@ -31,9 +34,11 @@ public final class AdminMainController {
     public String adminPanel(Model model) {
         long totalUsers = userService.countUsers();
         long totalCourses = courseService.countCourses();
+        long totalLessons = lessonService.countLessons();
 
         model.addAttribute("totalUsers", totalUsers);
         model.addAttribute("totalCourses", totalCourses);
+        model.addAttribute("totalLessons", totalLessons);
 
         return "admin/dashboard";
     }

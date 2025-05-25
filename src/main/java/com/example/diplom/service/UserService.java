@@ -5,7 +5,6 @@ import com.example.diplom.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -102,18 +101,13 @@ public class UserService {
 
         User existingUser = existingOpt.get();
 
-        // Обновляем основные поля
         existingUser.setEmail(updatedUser.getEmail());
 
-        // Если пароль обновлен и не пуст, хэшируем и сохраняем
         if (updatedUser.getPassword() != null && !updatedUser.getPassword().isBlank()) {
             existingUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
         }
 
-        // Обновляем роли — копируем через сеттер с защитой
         existingUser.setRoles(updatedUser.getRoles());
-
-        // Можно добавить обновление других полей, если будут (например, имя и пр.)
 
         return userRepository.save(existingUser);
     }

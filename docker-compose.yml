@@ -21,6 +21,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: ezyskills-app
+    platform: linux/amd64
     env_file:
       - .env
     ports:

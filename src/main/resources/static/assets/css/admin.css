@@ -188,3 +188,56 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 15px;
+    box-shadow: none;
+  }
+
+  .sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar a {
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .theme-toggle {
+    margin-bottom: 20px;
+  }
+
+  .logout {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-box {
+    padding: 15px;
+  }
+
+  .stat-box i {
+    font-size: 30px;
+  }
+
+  .stat-box h3 {
+    font-size: 1.4em;
+  }
+
+  .stat-box p {
+    font-size: 0.9em;
+  }
+}
