@@ -17,7 +17,7 @@ INSERT INTO courses (
              1,                            -- category_id (Programming)
              'Beginner',                   -- level
              'JavaScript fundamentals',          -- name
-             'Learn the core concepts of JavaScript in a beginner-friendly format.',  -- subtitle
+             'Your first step into the world of programming.',  -- subtitle
              '/assets/img/courses/JavaScript.png',  -- image_url
              'This course covers the fundamentals of the JavaScript language, and all the necessary general programming concepts, such as dealing with errors, debugging, and importing modules',
              3000,                          -- total_duration in minutes
