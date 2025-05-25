@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="|${lesson.id == null ? 'Create' : 'Edit'} Lesson|">Lesson Form</title>
+        <link rel="stylesheet" th:href="@{/assets/css/admin.css}">
+    </head>
+    <body>
+        <div th:replace="~{admin/fragments/sidebar :: sidebar}"></div>
+        <div class="content">
+            <h1 th:text="|${lesson.id == null ? 'Create' : 'Edit'} Lesson|"></h1>
+            <form th:action="@{${formAction}}" method="post" th:object="${lesson}">
+                <div style="margin-bottom: 15px;">
+                    <label for="name">name:</label><br/>
+                    <input type="text" id="name" name="name" th:field="*{name}" required
+                           style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: var(--danger);"></div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="content">Content:</label><br/>
+                    <textarea id="content" name="content" th:field="*{content}" rows="10"
+                              style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+                    <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color: var(--danger);"></div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="courseId">Course:</label><br/>
+                    <select id="courseId" name="courseId" th:field="*{courseId}"
+                            style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                        <option value="" disabled selected>Select a course</option>
+                        <option th:each="course : ${courses}"
+                                th:value="${course.id}"
+                                th:text="${course.name}"
+                                th:selected="${course.id == lesson.courseId}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('courseId')}" th:errors="*{courseId}" style="color: var(--danger);"></div>
+                </div>
+                <button type="submit"
+                        style="background: #4a5568; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer;">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <script th:src="@{/assets/js/theme.js}"></script>
+    </body>
+</html>

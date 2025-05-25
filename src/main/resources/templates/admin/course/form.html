@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title th:text="|${course.id == null ? 'Create' : 'Edit'} Course|">Course Form</title>
+        <link rel="stylesheet" th:href="@{/assets/css/admin.css}" />
+        <style>
+          .objective-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+          }
+          .objective-item input {
+            flex-grow: 1;
+          }
+          .remove-btn {
+            background-color: #e53e3e;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+        </style>
+    </head>
+    <body>
+        <div th:replace="~{admin/fragments/sidebar :: sidebar}"></div>
+        <div class="content">
+            <h1 th:text="|${course.id == null ? 'Create' : 'Edit'} Course|"></h1>
+            <form th:action="@{${formAction}}" method="post" th:object="${course}">
+                <input type="hidden" th:if="*{id != null}" th:field="*{id}" />
+                <div style="margin-bottom: 15px;">
+                    <label for="name">Name:</label><br/>
+                    <input type="text" id="name" th:field="*{name}" required minlength="5" maxlength="255"
+                           style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: var(--danger);"></div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="subtitle">Subtitle:</label><br/>
+                    <input type="text" id="subtitle" th:field="*{subtitle}" minlength="5" maxlength="255"
+                           style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+                    <div th:if="${#fields.hasErrors('subtitle')}" th:errors="*{subtitle}" style="color: var(--danger);"></div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="description">Description:</label><br/>
+                    <textarea id="description" th:field="*{description}"
+                              style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+                    <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: var(--danger);"></div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="level">Level:</label><br/>
+                    <select id="level" th:field="*{level}" required
+                            style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                        <option value="" disabled>Select level</option>
+                        <option value="BEGINNER">Beginner</option>
+                        <option value="INTERMEDIATE">Intermediate</option>
+                        <option value="ADVANCED">Advanced</option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('level')}" th:errors="*{level}" style="color: var(--danger);"></div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="totalDuration">Total Duration (in minutes):</label><br/>
+                    <input type="number" id="totalDuration" th:field="*{totalDuration}" min="1"
+                           style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="rating">Rating:</label><br/>
+                    <input type="number" id="rating" th:field="*{rating}" min="0" max="5" step="0.1"
+                           style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="status">Status:</label><br/>
+                    <select id="status" th:field="*{status}"
+                            style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                        <option value="DRAFT">Draft</option>
+                        <option value="OPENED">Opened</option>
+                        <option value="COMING_SOON">Coming Soon</option>
+                        <option value="ARCHIVED">Archived</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="imageUrl">Image URL:</label><br/>
+                    <input type="text" id="imageUrl" th:field="*{imageUrl}" required
+                           style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+                    <div th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" style="color: var(--danger);"></div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="category">Category:</label><br/>
+                    <select id="category" name="categoryId" required
+                            style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                        <option value="" disabled th:selected="${course.categoryId == null}">Select a category</option>
+                        <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"
+                                th:selected="${cat.id == course.categoryId}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('categoryId')}" th:errors="*{categoryId}" style="color: var(--danger);"></div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label>Objectives:</label>
+                    <div id="objectives-container">
+                        <div class="objective-item" th:each="obj, iterStat : *{objectives}">
+                            <input type="text" th:field="*{objectives[__${iterStat.index}__]}" placeholder="Enter goal..." />
+                            <button type="button" class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+                        </div>
+                    </div>
+                    <button type="button" onclick="addObjective()" style="margin-top: 10px;">+ Add Objective</button>
+                </div>
+                <button type="submit"
+                        style="background: #4a5568; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer;">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <script th:src="@{/assets/js/theme.js}"></script>
+        <script>
+            function addObjective() {
+                const container = document.getElementById('objectives-container');
+                const index = container.children.length;
+                const div = document.createElement('div');
+                div.className = 'objective-item';
+                div.innerHTML = `
+                    <input type="text" name="objectives[${index}]" placeholder="Enter goal..." />
+                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+                `;
+                container.appendChild(div);
+            }
+        </script>
+    </body>
+</html>

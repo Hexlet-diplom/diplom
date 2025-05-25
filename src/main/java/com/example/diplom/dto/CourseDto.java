@@ -6,8 +6,6 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -28,12 +26,4 @@ public class CourseDto {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private String status;
-
-    public List<String> getObjectives() {
-        return objectives == null ? null : Collections.unmodifiableList(objectives);
-    }
-
-    public void setObjectives(List<String> objectives) {
-        this.objectives = objectives == null ? null : new ArrayList<>(objectives);
-    }
 }

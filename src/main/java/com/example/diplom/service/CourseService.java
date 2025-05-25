@@ -50,27 +50,13 @@ public class CourseService {
         this.categoryService = categoryService;
     }
 
-    /**
-     * Creates a new course.
-     *
-     * @param name       course name
-     * @param description course description
-     * @param categoryName name of the category
-     * @return created {@link Course}
-     */
     @Transactional
-    public Course createCourse(final String name, final String description, final String categoryName) {
-        final Category category = categoryService.getCategoryByName(categoryName);
-
-        final Course course = new Course();
-        course.setName(name);
-        course.setDescription(description);
-        course.setCategory(category);
-        course.setStatus(CourseStatus.DRAFT); // по умолчанию, если нужно
-
+    public Course createCourse(Course course) {
+        if (course.getStatus() == null) {
+            course.setStatus(CourseStatus.DRAFT);
+        }
         return courseRepository.save(course);
     }
-
 
     /**
      * Retrieves all courses by the given category name.
@@ -150,32 +136,23 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
-    /**
-     * Updates an existing course.
-     *
-     * @param courseId    ID of the course to update
-     * @param name       new Name
-     * @param description new description
-     * @param categoryName new category name
-     * @param status      new status
-     * @return updated {@link Course}
-     * @throws CourseNotFoundException if course not found
-     */
-    public Course updateCourse(final Long courseId,
-                               final String name,
-                               final String description,
-                               final String categoryName,
-                               final CourseStatus status) {
-        final Course course = getCourseById(courseId);
 
-        final Category category = categoryService.getCategoryByName(categoryName);
+    @Transactional
+    public Course updateCourse(Course updatedCourse) {
+        Course existingCourse = getCourseById(updatedCourse.getId());
 
-        course.setName(name);
-        course.setDescription(description);
-        course.setCategory(category);
-        course.setStatus(status);
+        existingCourse.setName(updatedCourse.getName());
+        existingCourse.setDescription(updatedCourse.getDescription());
+        existingCourse.setCategory(updatedCourse.getCategory());
+        existingCourse.setStatus(updatedCourse.getStatus());
+        existingCourse.setSubtitle(updatedCourse.getSubtitle());
+        existingCourse.setLevel(updatedCourse.getLevel());
+        existingCourse.setTotalDuration(updatedCourse.getTotalDuration());
+        existingCourse.setRating(updatedCourse.getRating());
+        existingCourse.setImageUrl(updatedCourse.getImageUrl());
+        existingCourse.setObjectives(updatedCourse.getObjectives());
 
-        return courseRepository.save(course);
+        return courseRepository.save(existingCourse);
     }
 
     /**

@@ -1,108 +1,125 @@
 package com.example.diplom.controller.admin;
 
-import com.example.diplom.dto.RegistrationDto;
 import com.example.diplom.dto.UserDto;
-import com.example.diplom.mapper.RegistrationMapper;
-import com.example.diplom.mapper.RoleMapper;
 import com.example.diplom.mapper.UserMapper;
+import com.example.diplom.model.Role;
+import com.example.diplom.model.User;
 import com.example.diplom.repository.RoleRepository;
 import com.example.diplom.service.UserService;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Controller
-@RequestMapping("/admin/users")
-public final class AdminUserController {
+@RequestMapping(AdminUserController.BASE_PATH)
+@RequiredArgsConstructor
+public class AdminUserController {
+
+    public static final String BASE_PATH = "/admin/dashboard/users";
 
     private final UserService userService;
     private final RoleRepository roleRepository;
-    private final UserMapper userMapper;
-    private final RoleMapper roleMapper;
-    private final RegistrationMapper registrationMapper;
-
-    @SuppressFBWarnings(
-            value = "EI_EXPOSE_REP2",
-            justification = "Spring-managed service injected via constructor, safe to assign"
-    )
-    public AdminUserController(UserService userService,
-                               RoleRepository roleRepository,
-                               UserMapper userMapper,
-                               RoleMapper roleMapper, RegistrationMapper registrationMapper) {
-        this.userService = userService;
-        this.roleRepository = roleRepository;
-        this.userMapper = userMapper;
-        this.roleMapper = roleMapper;
-        this.registrationMapper = registrationMapper;
-    }
 
     @GetMapping
-    public String getUsers(Model model) {
-        var userDtos = userService.findAll()
-                .stream()
-                .map(userMapper::toDto)
+    public String listUsers(Model model) {
+        List<UserDto> users = userService.findAll().stream()
+                .map(UserMapper::toDto)
                 .collect(Collectors.toList());
-        model.addAttribute("users", userDtos);
-        return "admin/users/list";
+        model.addAttribute("users", users);
+        return "admin/user/list";
     }
 
-    @GetMapping("/create")
-    public String createUserForm(Model model) {
+    @GetMapping("/new")
+    public String showCreateForm(Model model) {
         model.addAttribute("user", new UserDto());
-        return "admin/users/create";
+        model.addAttribute("formAction", BASE_PATH);
+        model.addAttribute("allRoles", roleRepository.findAll());
+        return "admin/user/form";
     }
 
-    @PostMapping("/create")
-    public String createUser(@ModelAttribute("user") RegistrationDto userDto) {
-        var user = registrationMapper.toEntity(userDto);
-        userService.save(user);
-        return "redirect:/admin/users";
-    }
-
-
-    @GetMapping("/edit/{id}")
-    public String editUserForm(@PathVariable("id") Long userId, Model model) {
-        var user = userService.findById(userId);
-        var userDto = userMapper.toDto(user);
-        model.addAttribute("user", userDto);
-        model.addAttribute("roles", roleMapper.toDtoList(roleRepository.findAll()));
-        return "admin/users/edit";
-    }
-
-
-    @PostMapping("/edit/{id}")
-    public String editUser(@PathVariable("id") Long userId,
-                           @ModelAttribute("user") UserDto userDto) {
-        userDto.setId(userId);
-        var existingUser = userService.findById(userId);
-        if (existingUser == null) {
-            return "redirect:/admin/users?error=notfound";
+    @PostMapping
+    public String createUser(@Valid @ModelAttribute("user") UserDto dto,
+                             BindingResult bindingResult,
+                             Model model,
+                             RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("formAction", BASE_PATH);
+            model.addAttribute("allRoles", roleRepository.findAll());
+            return "admin/user/form";
         }
 
-        // Если пароль не задан — сохраняем старый
-        if (userDto.getPassword() == null || userDto.getPassword().isBlank()) {
-            userDto.setPassword(existingUser.getPassword());
+        try {
+            User user = UserMapper.toEntity(dto, roleRepository); // передаем репозиторий
+            userService.save(user);
+            redirectAttributes.addFlashAttribute("successMessage", "User created successfully");
+
+        } catch (IllegalArgumentException ex) {
+            bindingResult.rejectValue("email", "error.user", ex.getMessage());
+            model.addAttribute("formAction", BASE_PATH);
+            model.addAttribute("allRoles", roleRepository.findAll());
+            return "admin/user/form";
         }
 
-        userService.save(userMapper.toEntity(userDto));
-        return "redirect:/admin/users";
+        return "redirect:" + BASE_PATH;
     }
 
 
-    @GetMapping("/delete/{id}")
-    public String confirmDelete(@PathVariable("id") Long userId, Model model) {
-        var user = userService.findById(userId);
-        model.addAttribute("user", userMapper.toDto(user));
-        return "admin/users/delete";
+
+    @GetMapping("/{id}/edit")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        User user = userService.findById(id);
+        if (user == null) {
+            return "redirect:" + BASE_PATH;
+        }
+
+        UserDto dto = UserMapper.toDto(user);
+        model.addAttribute("user", dto);
+        model.addAttribute("formAction", BASE_PATH + "/" + id);
+        List<Role> allRoles = roleRepository.findAll();
+        model.addAttribute("allRoles", allRoles);
+        return "admin/user/form";
     }
 
+    @PostMapping("/{id}")
+    public String updateUser(@PathVariable Long id,
+                             @Valid @ModelAttribute("user") UserDto dto,
+                             BindingResult bindingResult,
+                             Model model,
+                             RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("formAction", BASE_PATH + "/" + id);
+            model.addAttribute("allRoles", roleRepository.findAll());
+            return "admin/user/form";
+        }
 
-    @PostMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") Long userId) {
-        userService.delete(userId);
-        return "redirect:/admin/users";
+        try {
+            User updatedUser = UserMapper.toEntity(dto, roleRepository);  // передаем репозиторий
+            userService.update(id, updatedUser);
+            redirectAttributes.addFlashAttribute("successMessage", "User updated successfully");
+        } catch (IllegalArgumentException ex) {
+            bindingResult.rejectValue("email", "error.user", ex.getMessage());
+            model.addAttribute("formAction", BASE_PATH + "/" + id);
+            model.addAttribute("allRoles", roleRepository.findAll());
+            return "admin/user/form";
+        }
+
+        return "redirect:" + BASE_PATH;
+    }
+
+    @PostMapping("/{id}/delete")
+    public String deleteUser(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        userService.delete(id);
+        log.info("Deleted user with id {}", id);
+        redirectAttributes.addFlashAttribute("successMessage", "User deleted successfully");
+        return "redirect:" + BASE_PATH;
     }
 }

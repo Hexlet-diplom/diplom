@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class CourseMapper {
 
-    public CourseDto toDto(Course course) {
+    public static CourseDto toDto(Course course) {
         if (course == null) {
             return null;
         }
@@ -32,7 +32,7 @@ public class CourseMapper {
         return dto;
     }
 
-    public Course toEntity(CourseDto dto, Category category) {
+    public static Course toEntity(CourseDto dto, Category category) {
         if (dto == null || category == null) {
             return null;
         }
