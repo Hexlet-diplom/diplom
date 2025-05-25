@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 :root {
   --primary-text: #000;
   --background: #ffffff;
@@ -22,7 +24,7 @@ body {
 .lesson-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 4rem 1rem;
   position: relative;
   z-index: 1;
 }
@@ -53,7 +55,7 @@ body {
 .nav-button {
   font-size: 1rem;
   background: var(--button-bg);
-  color: var(--primary-text);
+  color: var(--background);
   padding: 14px 28px;
   border-radius: 12px;
   border: 1px solid var(--gray-border);
@@ -72,7 +74,7 @@ body {
   background: #fff;
   border-radius: 16px;
   padding: 2rem;
-  margin: 2rem 2.5rem;
+  margin: 1rem 1.5rem;
   border: 1px solid var(--gray-border);
 }
 
@@ -185,4 +187,111 @@ body {
 @keyframes floaty {
   0% { transform: translateY(0) rotate(0deg); }
   100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+.dino-game-wrapper {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto 2rem;
+  padding: 2rem;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--gray-border);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+
+.dino-game-wrapper iframe {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  height: auto;
+  aspect-ratio: 21 / 5;
+  max-height: 400px;
+  transition: aspect-ratio 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .dino-game-wrapper {
+    padding: 1.5rem;
+  }
+
+  .dino-game-wrapper h2 {
+    font-size: 2rem;
+  }
+
+  .dino-game-wrapper iframe {
+    aspect-ratio: 16 / 5;
+  }
+}
+
+@media (max-width: 768px) {
+  .dino-game-wrapper {
+    margin: 1.5rem 0;
+    padding: 1rem;
+  }
+
+  .dino-game-wrapper h2 {
+    font-size: 1.6rem;
+  }
+
+  .dino-game-wrapper iframe {
+    aspect-ratio: 16 / 9;
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dino-game-wrapper {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    border-radius: 14px;
+  }
+
+  .dino-game-wrapper h2 {
+    font-size: 1.3rem;
+  }
+
+  .dino-game-wrapper iframe {
+    aspect-ratio: 16 / 10;
+    max-height: 200px;
+  }
+}
+
+.dino-content {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 40px;
+  font-family: 'Press Start 2P', cursive;
+  padding: 2rem 0;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.dino {
+  width: 200px;
+  image-rendering: pixelated;
+  animation: roarShake 0.6s ease-in-out infinite alternate;
+}
+
+.dino-content .text {
+  font-size: 0.8rem;
+  max-width: 250px;
+  line-height: 1.4;
+  color: black;
+}
+
+.text .grr {
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+@keyframes roarShake {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(5px) rotate(3deg); }
 }

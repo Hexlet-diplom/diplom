@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google Dino Pixel</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+      body {
+        background: white;
+        font-family: 'Press Start 2P', cursive;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        gap: 40px;
+      }
+
+      .dino {
+        width: 200px;
+        image-rendering: pixelated;
+        animation: roarShake 0.6s ease-in-out infinite alternate;
+      }
+
+      .text {
+        font-size: 1rem;
+        max-width: 250px;
+        line-height: 1.4;
+      }
+
+      .text .grr {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 10px;
+      }
+
+      @keyframes roarShake {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(5px) rotate(3deg); }
+      }
+    </style>
+</head>
+<body>
+<img
+        src="../../static/assets/img/dinosaur-game-seeklogo.png"
+        alt="Google Dino"
+        class="dino"
+/>
+<div class="text">
+    Beat my high score!<br />
+    <span class="grr">Grrrrrr!</span>
+</div>
+</body>
+</html>
