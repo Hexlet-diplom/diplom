@@ -15,14 +15,10 @@ spring:
     banner-mode: off
     allow-bean-definition-overriding: true
 
-  profiles:
-    active: prod
-
   jpa:
     properties:
       hibernate:
         format_sql: true
-
     hibernate:
       ddl-auto: none
     database-platform: org.hibernate.dialect.PostgreSQLDialect

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title th:text="${lesson.name}"></title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
@@ -31,6 +32,20 @@
                      th:utext="${lessonContentHtml}">
                 </div>
             </div>
+        </div>
+        <div th:if="${nextLesson == null}" class="dino-game-wrapper">
+            <div class="dino-content">
+                <img
+                        th:src="@{/assets/img/dinosaur-game-seeklogo.png}"
+                        alt="Google Dino"
+                        class="dino"
+                />
+                <div class="text">
+                    Try to beat my record!<br />
+                    <span class="grr">Grrrrrr!</span>
+                </div>
+            </div>
+            <iframe th:src="@{/dino/dino-game.html}" allowfullscreen></iframe>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
         <script>hljs.highlightAll();</script>
