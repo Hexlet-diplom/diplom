@@ -18,4 +18,5 @@ public class LessonDto {
     private String description;
     private String content;
     private List<MediaItem> media;
+    private String mediaJson;
 }
