@@ -106,6 +106,7 @@ public class LessonService {
         existingLesson.setContent(updatedLesson.getContent());
         existingLesson.setOrderNumber(updatedLesson.getOrderNumber());
         existingLesson.setCourse(updatedLesson.getCourse());
+        existingLesson.setMedia(updatedLesson.getMedia());
 
         return lessonRepository.save(existingLesson);
     }

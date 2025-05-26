@@ -17,6 +17,12 @@
                     <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: var(--danger);"></div>
                 </div>
                 <div style="margin-bottom: 15px;">
+                    <label for="description">Description:</label><br/>
+                    <textarea id="description" name="description" th:field="*{description}" rows="4"
+                              style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+                    <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color: var(--danger);"></div>
+                </div>
+                <div style="margin-bottom: 15px;">
                     <label for="content">Content:</label><br/>
                     <textarea id="content" name="content" th:field="*{content}" rows="10"
                               style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;"></textarea>
@@ -33,6 +39,18 @@
                                 th:selected="${course.id == lesson.courseId}"></option>
                     </select>
                     <div th:if="${#fields.hasErrors('courseId')}" th:errors="*{courseId}" style="color: var(--danger);"></div>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label for="orderNumber">Order Number:</label><br/>
+                    <input type="number" id="orderNumber" name="orderNumber" th:field="*{orderNumber}" min="0"
+                           style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+                    <div th:if="${#fields.hasErrors('orderNumber')}" th:errors="*{orderNumber}" style="color: var(--danger);"></div>
+                </div>
+                <div class="form-group">
+                    <label for="mediaJson">Media (JSON формат)</label>
+                    <textarea id="mediaJson" name="mediaJson" class="form-control" rows="5"
+                              th:text="${lesson.mediaJson}">[]</textarea>
                 </div>
                 <button type="submit"
                         style="background: #4a5568; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer;">

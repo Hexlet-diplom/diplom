@@ -80,6 +80,7 @@ dependencies {
     // Database dependencies
     implementation("org.postgresql:postgresql:42.7.4")
     implementation("org.hibernate.orm:hibernate-core:6.6.13.Final")
+    implementation("com.vladmihalcea:hibernate-types-60:2.21.1")
 
     // Validation dependencies
     implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")

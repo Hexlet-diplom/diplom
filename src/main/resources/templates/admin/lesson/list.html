@@ -25,6 +25,7 @@
                     <th style="padding: 12px;">ID</th>
                     <th style="padding: 12px;">Name</th>
                     <th style="padding: 12px;">Course</th>
+                    <th style="padding: 12px;">Order number</th>
                     <th style="padding: 12px;">Actions</th>
                 </tr>
                 </thead>
@@ -33,6 +34,7 @@
                     <td th:text="${lesson.id}" style="padding: 12px;"></td>
                     <td th:text="${lesson.name}" style="padding: 12px;"></td>
                     <td th:text="${lesson.courseId}" style="padding: 12px;"></td>
+                    <td th:text="${lesson.orderNumber}" style="padding: 12px;"></td>
                     <td style="padding: 12px;">
                         <a th:href="@{/admin/dashboard/lessons/{id}/edit(id=${lesson.id})}">Edit</a>
                         <form th:action="@{/admin/dashboard/lessons/{id}/delete(id=${lesson.id})}" method="post"

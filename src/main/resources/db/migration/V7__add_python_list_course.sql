@@ -17,7 +17,7 @@ INSERT INTO courses (
              1,                            -- category_id (Programming)
              'Beginner',                   -- level
              'Python: Lists',          -- name
-             '🐍 Lists: Python’s favorite way to hoard stuff.',  -- subtitle
+             'Lists: Python’s favorite way to hoard stuff.',  -- subtitle
              '/assets/img/courses/Python.png',  -- image_url
              'In this course, you will comprehend the structure of list data. You will learn more about slices, iterators, and lazy calculations. As a result, you will learn how to manipulate data with lists and work even with infinite collections. The knowledge from this course helps programmers solve algorithmic problems and process data efficiently. This course is suitable for those who already know the basics of Python and are still learning.',
              2400,                          -- total_duration in minutes
